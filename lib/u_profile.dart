@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-class UserAnimation extends StatelessWidget {
-  const UserAnimation({super.key});
+class UserScreen extends StatelessWidget {
+  const UserScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: ,
+      body: Center(child: Text("welcome user")),
     );
   }
 }
