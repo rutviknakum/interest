@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:interest/admin.dart';
+import 'package:interest/Screens/Admin_Screen/A_Loginscreen.dart';
 import 'package:interest/widget/CustomButton.dart';
 
 class DashboardScreen extends StatelessWidget {
@@ -15,7 +15,7 @@ class DashboardScreen extends StatelessWidget {
               text: 'admin',
               onTap: () {
                 Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => adminScreen()));
+                    MaterialPageRoute(builder: (context) => A_Loginscreen()));
               },
             ),
           ],

@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class adminScreen extends StatefulWidget {
-  const adminScreen({super.key});
+class A_Loginscreen extends StatefulWidget {
+  const A_Loginscreen({super.key});
 
   @override
-  State<adminScreen> createState() => _adminScreenState();
+  State<A_Loginscreen> createState() => _A_LoginscreenState();
 }
 
-class _adminScreenState extends State<adminScreen>
+class _A_LoginscreenState extends State<A_Loginscreen>
     with SingleTickerProviderStateMixin {
   var emailController = TextEditingController();
   var pwdController = TextEditingController();
@@ -22,7 +22,7 @@ class _adminScreenState extends State<adminScreen>
     _animation =
         AnimationController(vsync: this, duration: Duration(seconds: 3));
 //position of welcome text
-    _welcometextpos = Tween<double>(begin: 0.5, end: -0.9).animate(
+    _welcometextpos = Tween<double>(begin: 0.5, end: -0.6).animate(
         CurvedAnimation(
             parent: _animation,
             curve: Interval(0.0, 0.5, curve: Curves.easeInOut)));
@@ -95,7 +95,8 @@ class _adminScreenState extends State<adminScreen>
                   child: Align(
                     alignment: Alignment.center,
                     child: Padding(
-                      padding: const EdgeInsets.all(16.0),
+                      padding:
+                          const EdgeInsets.only(top: 75, left: 16, right: 16),
                       child: Material(
                         elevation: 8,
                         borderRadius: BorderRadius.circular(16),
@@ -104,7 +105,11 @@ class _adminScreenState extends State<adminScreen>
                           child: Column(
                             mainAxisSize: MainAxisSize.min,
                             children: [
-                              Image.asset('assets/images/'),
+                              Image.asset(
+                                'assets/images/Logo.png',
+                                height: 200,
+                                width: 150,
+                              ),
                               SizedBox(height: 16),
                               TextField(
                                 controller: emailController,
@@ -115,7 +120,7 @@ class _adminScreenState extends State<adminScreen>
                                   border: OutlineInputBorder(),
                                 ),
                               ),
-                              SizedBox(height: 16),
+                              SizedBox(height: 20),
                               TextField(
                                 obscureText: true,
                                 decoration: InputDecoration(
@@ -124,7 +129,7 @@ class _adminScreenState extends State<adminScreen>
                                   border: OutlineInputBorder(),
                                 ),
                               ),
-                              SizedBox(height: 24),
+                              SizedBox(height: 30),
                               SizedBox(
                                 width: 150,
                                 height: 50,
@@ -142,6 +147,7 @@ class _adminScreenState extends State<adminScreen>
                                       Icon(
                                         Icons.login,
                                         size: 25,
+                                        color: Colors.white,
                                       ),
                                       SizedBox(
                                         width: 10,
