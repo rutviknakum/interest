@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:interest/admin.dart';
+import 'package:interest/widget/CustomButton.dart';
 
 class DashboardScreen extends StatelessWidget {
   const DashboardScreen({super.key});
@@ -8,8 +9,21 @@ class DashboardScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
+        child: Row(
+          children: [
+            CustomButton(
+              text: 'admin',
+              onTap: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => adminScreen()));
+              },
+            ),
+          ],
+        ),
+      ),
+      /*body: Container(
         height: double.infinity,
-        width: double.infinity,
+        width: double.infinity, 
         decoration: BoxDecoration(
             gradient: LinearGradient(
           colors: [Color(0xffa1c4fd), Color(0xffc2e9fb)],
@@ -35,11 +49,15 @@ class DashboardScreen extends StatelessWidget {
                             MaterialPageRoute(
                                 builder: (context) => adminScreen()));
                       },
+                      style: IconButton.styleFrom(
+                          shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8),
+                      )),
                     ),
                   ),
                   Text(
                     "Admin",
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.w400),
+                    style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
                   ),
                 ],
               ),
@@ -48,8 +66,7 @@ class DashboardScreen extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   SizedBox(
-                    width: 110,
-                    height: 100,
+                    width: 200,
                     child: IconButton(
                       icon: Icon(
                         Icons.account_circle_sharp,
@@ -57,20 +74,27 @@ class DashboardScreen extends StatelessWidget {
                         color: Colors.black,
                       ),
                       onPressed: () {
-                        // Add User button action
+                        /*Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                //builder: (context) => AnimatedWelcomeScreen()));*/
                       },
+                      style: IconButton.styleFrom(
+                          shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8),
+                      )),
                     ),
                   ),
                   Text(
                     "User",
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.w400),
+                    style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
                   ),
                 ],
               ),
             ],
           ),
         ),
-      ),
+      ),*/
     );
   }
 }
