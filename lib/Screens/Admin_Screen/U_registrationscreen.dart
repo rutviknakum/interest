@@ -102,7 +102,7 @@ class _U_registrationscreenState extends State<U_registrationscreen>
               animation: _loginScreenOpacity,
               builder: (context, child) {
                 return Opacity(
-                  opacity: _loginScreenOpacity.value,
+                  opacity: 1,
                   child: Align(
                     alignment: Alignment.center,
                     child: Padding(
