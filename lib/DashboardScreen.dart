@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:interest/AnimatedWelcomeScreen.dart';
+import 'package:interest/Screens/Admin_Screen/U_registrationscreen.dart';
 import 'package:interest/Screens/Admin_Screen/A_Loginscreen.dart';
 
 class DashboardScreen extends StatelessWidget {
@@ -76,7 +76,7 @@ class DashboardScreen extends StatelessWidget {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => AnimatedWelcomeScreen()));
+                          builder: (context) => U_registrationscreen()));
                 },
                 style: TextButton.styleFrom(
                     shape: RoundedRectangleBorder(

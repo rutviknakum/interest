@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class AnimatedWelcomeScreen extends StatefulWidget {
-  const AnimatedWelcomeScreen({super.key});
+class U_registrationscreen extends StatefulWidget {
+  const U_registrationscreen({super.key});
 
   @override
-  _AnimatedWelcomeScreenState createState() => _AnimatedWelcomeScreenState();
+  _U_registrationscreenState createState() => _U_registrationscreenState();
 }
 
-class _AnimatedWelcomeScreenState extends State<AnimatedWelcomeScreen>
+class _U_registrationscreenState extends State<U_registrationscreen>
     with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<double> _welcomeTextPosition;
@@ -27,7 +27,7 @@ class _AnimatedWelcomeScreenState extends State<AnimatedWelcomeScreen>
     // Define the animation for moving the "Welcome" text
     _welcomeTextPosition = Tween<double>(
       begin: 0.5, // Start in the middle (50% height)
-      end: -0.8, // Move to the top
+      end: -0.6, // Move to the top
     ).animate(
       CurvedAnimation(
         parent: _controller,
@@ -42,7 +42,7 @@ class _AnimatedWelcomeScreenState extends State<AnimatedWelcomeScreen>
     ).animate(
       CurvedAnimation(
         parent: _controller,
-        curve: Interval(0.5, 1.0, curve: Curves.easeIn),
+        curve: Interval(0.4, 1.0, curve: Curves.easeIn),
       ),
     );
 
@@ -51,7 +51,7 @@ class _AnimatedWelcomeScreenState extends State<AnimatedWelcomeScreen>
 
     // Set a listener to show the login screen once "Welcome" finishes moving
     _controller.addListener(() {
-      if (_controller.value > 0.5 && !_showLoginScreen) {
+      if (_controller.value > 0.2 && !_showLoginScreen) {
         setState(() {
           _showLoginScreen = true;
         });
@@ -70,6 +70,15 @@ class _AnimatedWelcomeScreenState extends State<AnimatedWelcomeScreen>
     return Scaffold(
       body: Stack(
         children: [
+          Container(
+            height: double.infinity,
+            width: double.infinity,
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                colors: [Color(0xffa1c4fd), Color(0xffc2e9fb)],
+              ),
+            ),
+          ),
           // Animated "Welcome" Text
           AnimatedBuilder(
             animation: _welcomeTextPosition,
@@ -77,11 +86,11 @@ class _AnimatedWelcomeScreenState extends State<AnimatedWelcomeScreen>
               return Align(
                 alignment: Alignment(0, _welcomeTextPosition.value),
                 child: Text(
-                  'Welcome',
+                  'Welcome...!',
                   style: TextStyle(
-                    fontSize: 36,
+                    fontSize: 40,
                     fontWeight: FontWeight.bold,
-                    color: Colors.blue,
+                    color: Colors.black,
                   ),
                 ),
               );
@@ -97,7 +106,8 @@ class _AnimatedWelcomeScreenState extends State<AnimatedWelcomeScreen>
                   child: Align(
                     alignment: Alignment.bottomCenter,
                     child: Padding(
-                      padding: const EdgeInsets.all(16.0),
+                      padding:
+                          const EdgeInsets.only(top: 75, left: 16, right: 16),
                       child: Material(
                         elevation: 8,
                         borderRadius: BorderRadius.circular(16),
@@ -106,6 +116,11 @@ class _AnimatedWelcomeScreenState extends State<AnimatedWelcomeScreen>
                           child: Column(
                             mainAxisSize: MainAxisSize.min,
                             children: [
+                              Image.asset(
+                                'assets/images/Logo.png',
+                                height: 200,
+                                width: 150,
+                              ),
                               TextField(
                                 decoration: InputDecoration(
                                   labelText: "Username",
