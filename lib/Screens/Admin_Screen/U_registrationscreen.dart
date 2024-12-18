@@ -104,7 +104,7 @@ class _U_registrationscreenState extends State<U_registrationscreen>
                 return Opacity(
                   opacity: _loginScreenOpacity.value,
                   child: Align(
-                    alignment: Alignment.bottomCenter,
+                    alignment: Alignment.center,
                     child: Padding(
                       padding:
                           const EdgeInsets.only(top: 75, left: 16, right: 16),
@@ -121,24 +121,77 @@ class _U_registrationscreenState extends State<U_registrationscreen>
                                 height: 200,
                                 width: 150,
                               ),
+                              SizedBox(height: 15),
                               TextField(
                                 decoration: InputDecoration(
-                                  labelText: "Username",
+                                  labelText: "Name",
+                                  hintText: "Enter Your Name...!",
                                   border: OutlineInputBorder(),
                                 ),
                               ),
-                              SizedBox(height: 16),
+                              SizedBox(height: 15),
+                              TextField(
+                                decoration: InputDecoration(
+                                  labelText: "Email",
+                                  hintText: "Enter Your Email...!",
+                                  border: OutlineInputBorder(),
+                                ),
+                              ),
+                              SizedBox(height: 15),
+                              TextField(
+                                decoration: InputDecoration(
+                                  labelText: "Phone Number",
+                                  hintText: "Enter Your PhoneNumber...!",
+                                  border: OutlineInputBorder(),
+                                ),
+                              ),
+                              SizedBox(height: 15),
                               TextField(
                                 obscureText: true,
                                 decoration: InputDecoration(
                                   labelText: "Password",
+                                  hintText: 'Enter your Password...!',
                                   border: OutlineInputBorder(),
                                 ),
                               ),
-                              SizedBox(height: 24),
-                              ElevatedButton(
-                                onPressed: () {},
-                                child: Text("Login"),
+                              SizedBox(height: 15),
+                              TextField(
+                                obscureText: true,
+                                decoration: InputDecoration(
+                                  labelText: "Re-Type Password",
+                                  hintText: "",
+                                  border: OutlineInputBorder(),
+                                ),
+                              ),
+                              SizedBox(height: 20),
+                              SizedBox(
+                                width: 175,
+                                height: 50,
+                                child: TextButton(
+                                  onPressed: () {},
+                                  style: TextButton.styleFrom(
+                                    foregroundColor: Colors.white,
+                                    backgroundColor: Colors.black,
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(8),
+                                    ),
+                                  ),
+                                  child: Row(
+                                    children: [
+                                      Icon(Icons.app_registration,
+                                          size: 25, color: Colors.white),
+                                      SizedBox(
+                                        width: 10,
+                                      ),
+                                      Text(
+                                        "Register",
+                                        style: TextStyle(
+                                            fontSize: 25,
+                                            fontWeight: FontWeight.bold),
+                                      )
+                                    ],
+                                  ),
+                                ),
                               ),
                             ],
                           ),
