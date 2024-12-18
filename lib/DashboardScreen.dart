@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:interest/AnimatedWelcomeScreen.dart';
 import 'package:interest/Screens/Admin_Screen/A_Loginscreen.dart';
-import 'package:interest/widget/CustomButton.dart';
 
 class DashboardScreen extends StatelessWidget {
   const DashboardScreen({super.key});
@@ -8,22 +8,19 @@ class DashboardScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        child: Row(
-          children: [
-            CustomButton(
-              text: 'admin',
-              onTap: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => A_Loginscreen()));
-              },
-            ),
-          ],
+      /*body: Center(
+        child: CustomSquareButton(
+          icon: Icons.admin_panel_settings,
+          text: 'Admin',
+          onPressed: () {
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => A_Loginscreen()));
+          },
         ),
-      ),
-      /*body: Container(
+      ),*/
+      body: Container(
         height: double.infinity,
-        width: double.infinity, 
+        width: double.infinity,
         decoration: BoxDecoration(
             gradient: LinearGradient(
           colors: [Color(0xffa1c4fd), Color(0xffc2e9fb)],
@@ -36,65 +33,78 @@ class DashboardScreen extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   SizedBox(
-                    width: 200,
-                    child: IconButton(
-                      icon: Icon(
-                        Icons.admin_panel_settings,
-                        size: 30,
-                        color: Colors.black,
-                      ),
+                    width: 150,
+                    child: TextButton(
                       onPressed: () {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => adminScreen()));
+                                builder: (context) => A_Loginscreen()));
                       },
-                      style: IconButton.styleFrom(
+                      style: TextButton.styleFrom(
                           shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(8),
                       )),
+                      child: Row(
+                        children: [
+                          Icon(
+                            Icons.admin_panel_settings,
+                            size: 25,
+                            color: Colors.black,
+                          ),
+                          SizedBox(
+                            width: 10,
+                          ),
+                          Text(
+                            "Admin",
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontSize: 25,
+                                fontWeight: FontWeight.bold),
+                          )
+                        ],
+                      ),
                     ),
-                  ),
-                  Text(
-                    "Admin",
-                    style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
                   ),
                 ],
               ),
-              SizedBox(width: 50),
-              Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  SizedBox(
-                    width: 200,
-                    child: IconButton(
-                      icon: Icon(
-                        Icons.account_circle_sharp,
-                        size: 30,
-                        color: Colors.black,
-                      ),
-                      onPressed: () {
-                        /*Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                //builder: (context) => AnimatedWelcomeScreen()));*/
-                      },
-                      style: IconButton.styleFrom(
-                          shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8),
-                      )),
+              SizedBox(
+                width: 50,
+              ),
+              TextButton(
+                onPressed: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => AnimatedWelcomeScreen()));
+                },
+                style: TextButton.styleFrom(
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8))),
+                child: Row(
+                  children: [
+                    Icon(
+                      Icons.account_box_rounded,
+                      size: 25,
+                      color: Colors.black,
                     ),
-                  ),
-                  Text(
-                    "User",
-                    style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
-                  ),
-                ],
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Text(
+                      'User',
+                      style: TextStyle(
+                          fontSize: 25,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black),
+                    )
+                  ],
+                ),
               ),
             ],
           ),
         ),
-      ),*/
+      ),
     );
   }
 }
