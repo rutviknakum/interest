@@ -6,15 +6,15 @@ class CustomSquareButton extends StatelessWidget {
   final VoidCallback onPressed;
 
   const CustomSquareButton({
-    Key? key,
+    super.key,
     required this.icon,
     required this.text,
     required this.onPressed,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: double.infinity,
       width: double.infinity,
       child: InkWell(

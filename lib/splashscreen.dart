@@ -23,9 +23,6 @@ class _SplashscreenState extends State<Splashscreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-          //backgroundColor: Colors.deepPurpleAccent.shade100,
-          ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -36,8 +33,9 @@ class _SplashscreenState extends State<Splashscreen> {
           Center(
             child: Image.asset(
               'assets/images/Splash.png',
-              height: 200,
-              width: 200,
+              fit: BoxFit.cover, // Ensures the image covers its container
+              width: MediaQuery.of(context).size.width, // Full width
+              height: MediaQuery.of(context).size.height, // Full height
             ),
           ),
         ],

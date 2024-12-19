@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:interest/widget/LoginButton.dart';
 
 class U_registration extends StatelessWidget {
   const U_registration({super.key});
@@ -70,8 +71,8 @@ class U_registration extends StatelessWidget {
                         TextField(
                           obscureText: true,
                           decoration: InputDecoration(
-                            labelText: "Re-Type Password",
-                            hintText: "",
+                            labelText: "Password",
+                            hintText: "Re-Type Password...!",
                             border: OutlineInputBorder(),
                           ),
                         ),
@@ -85,7 +86,7 @@ class U_registration extends StatelessWidget {
                               foregroundColor: Colors.white,
                               backgroundColor: Colors.black,
                               shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(8),
+                                borderRadius: BorderRadius.zero,
                               ),
                             ),
                             child: Row(
@@ -106,8 +107,15 @@ class U_registration extends StatelessWidget {
                           ),
                         ),
                         SizedBox(
-                          width: 8,
+                          height: 10,
                         ),
+                        googleLoginButton(),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        appleLoginButton()
+
+                        /*
                         Row(
                           children: [
                             TextButton(
@@ -115,7 +123,7 @@ class U_registration extends StatelessWidget {
                                 style: TextButton.styleFrom(
                                   foregroundColor: Colors.black,
                                   shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(8),
+                                    borderRadius: BorderRadius.zero,
                                   ),
                                 ),
                                 child: Text(
@@ -133,7 +141,7 @@ class U_registration extends StatelessWidget {
                                 style: TextButton.styleFrom(
                                   foregroundColor: Colors.black,
                                   shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(8),
+                                    borderRadius: BorderRadius.zero,
                                   ),
                                 ),
                                 child: Text(
@@ -145,6 +153,7 @@ class U_registration extends StatelessWidget {
                                 )),
                           ],
                         )
+                        */
                       ],
                     ),
                   ),

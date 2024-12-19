@@ -43,18 +43,18 @@ class DashboardScreen extends StatelessWidget {
                       },
                       style: TextButton.styleFrom(
                           shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8),
+                        borderRadius: BorderRadius.zero,
                       )),
                       child: Row(
                         children: [
                           Icon(
                             Icons.admin_panel_settings,
-                            size: 25,
+                            size: 45,
                             color: Colors.black,
                           ),
                           SizedBox(
-                            width: 10,
-                          ),
+                              //  width: 10,
+                              ),
                           Text(
                             "Admin",
                             style: TextStyle(
@@ -83,7 +83,7 @@ class DashboardScreen extends StatelessWidget {
                   children: [
                     Icon(
                       Icons.account_box_rounded,
-                      size: 25,
+                      size: 45,
                       color: Colors.black,
                     ),
                     SizedBox(

@@ -21,7 +21,7 @@ class ForgotPwdScreen extends StatelessWidget {
             padding: const EdgeInsets.all(8),
             child: Material(
               elevation: 8,
-              borderRadius: BorderRadius.circular(16),
+              borderRadius: BorderRadius.zero,
               child: Padding(
                 padding: const EdgeInsets.all(24),
                 child: Column(

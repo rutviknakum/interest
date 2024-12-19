@@ -100,7 +100,8 @@ class _U_LoginscreenState extends State<U_Loginscreen>
                           const EdgeInsets.only(top: 95, left: 16, right: 16),
                       child: Material(
                         elevation: 8,
-                        borderRadius: BorderRadius.circular(16),
+                        borderRadius: BorderRadius.zero,
+                        shadowColor: Colors.black,
                         child: Padding(
                           padding: const EdgeInsets.all(24.0),
                           child: Column(
@@ -130,9 +131,9 @@ class _U_LoginscreenState extends State<U_Loginscreen>
                                   border: OutlineInputBorder(),
                                 ),
                               ),
-                              SizedBox(height: 10),
+                              SizedBox(height: 20),
                               SizedBox(
-                                width: 160,
+                                width: 150,
                                 height: 50,
                                 child: TextButton(
                                   onPressed: () {},
@@ -140,7 +141,7 @@ class _U_LoginscreenState extends State<U_Loginscreen>
                                     foregroundColor: Colors.white,
                                     backgroundColor: Colors.black,
                                     shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(8),
+                                      borderRadius: BorderRadius.zero,
                                     ),
                                   ),
                                   child: Row(
@@ -163,22 +164,28 @@ class _U_LoginscreenState extends State<U_Loginscreen>
                                   ),
                                 ),
                               ),
+                              SizedBox(
+                                height: 10,
+                              ),
                               Row(
                                 children: [
-                                  SizedBox(
-                                    width: 10,
-                                  ),
                                   TextButton(
                                       onPressed: () {},
+                                      style: TextButton.styleFrom(
+                                        // foregroundColor: Colors.black,
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.zero,
+                                        ),
+                                      ),
                                       child: Text(
-                                        "Forgot Password",
+                                        "Forgot Password.!?",
                                         style: TextStyle(
-                                            color: Colors.black,
+                                            // color: Colors.black,
                                             fontSize: 15,
                                             fontWeight: FontWeight.bold),
                                       )),
                                   SizedBox(
-                                    width: 50,
+                                    width: 5,
                                   ),
                                   TextButton(
                                       onPressed: () {
@@ -189,16 +196,15 @@ class _U_LoginscreenState extends State<U_Loginscreen>
                                                     U_registration()));
                                       },
                                       style: TextButton.styleFrom(
-                                        foregroundColor: Colors.black,
+                                        // foregroundColor: Colors.black,
                                         shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(8),
+                                          borderRadius: BorderRadius.zero,
                                         ),
                                       ),
                                       child: Text(
-                                        "New User",
+                                        "New Registration..!?",
                                         style: TextStyle(
-                                            color: Colors.black,
+                                            //   color: Colors.black,
                                             fontSize: 15,
                                             fontWeight: FontWeight.bold),
                                       )),

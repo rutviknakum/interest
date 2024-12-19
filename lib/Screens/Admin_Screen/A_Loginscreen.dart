@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:interest/Forgot_pwd.dart';
+import 'package:interest/Screens/Admin_Screen/A_Forgot_pwd.dart';
 
 class A_Loginscreen extends StatefulWidget {
   const A_Loginscreen({super.key});
@@ -100,7 +100,7 @@ class _A_LoginscreenState extends State<A_Loginscreen>
                           const EdgeInsets.only(top: 95, left: 16, right: 16),
                       child: Material(
                         elevation: 8,
-                        borderRadius: BorderRadius.circular(16),
+                        borderRadius: BorderRadius.zero,
                         child: Padding(
                           padding: const EdgeInsets.all(24.0),
                           child: Column(
@@ -130,7 +130,39 @@ class _A_LoginscreenState extends State<A_Loginscreen>
                                   border: OutlineInputBorder(),
                                 ),
                               ),
-                              SizedBox(height: 30),
+                              //  SizedBox(height: 30),
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.end,
+                                children: [
+                                  SizedBox(
+                                    width: 10,
+                                  ),
+                                  TextButton(
+                                      onPressed: () {
+                                        Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    ForgotPwdScreen()));
+                                      },
+                                      style: TextButton.styleFrom(
+                                        // foregroundColor: Colors.black,
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.zero,
+                                        ),
+                                      ),
+                                      child: Text(
+                                        "Forgot Password?!",
+                                        style: TextStyle(
+                                            // color: Colors.black,
+                                            fontSize: 15,
+                                            fontWeight: FontWeight.bold),
+                                      )),
+                                ],
+                              ),
+                              SizedBox(
+                                height: 10,
+                              ),
                               SizedBox(
                                 width: 150,
                                 height: 50,
@@ -140,7 +172,7 @@ class _A_LoginscreenState extends State<A_Loginscreen>
                                     foregroundColor: Colors.white,
                                     backgroundColor: Colors.black,
                                     shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(8),
+                                      borderRadius: BorderRadius.zero,
                                     ),
                                   ),
                                   child: Row(
@@ -163,35 +195,6 @@ class _A_LoginscreenState extends State<A_Loginscreen>
                                   ),
                                 ),
                               ),
-                              Row(
-                                children: [
-                                  SizedBox(
-                                    width: 10,
-                                  ),
-                                  TextButton(
-                                      onPressed: () {
-                                        Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: (context) =>
-                                                    ForgotPwdScreen()));
-                                      },
-                                      style: TextButton.styleFrom(
-                                        foregroundColor: Colors.black,
-                                        shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(8),
-                                        ),
-                                      ),
-                                      child: Text(
-                                        "Forgot Password?!",
-                                        style: TextStyle(
-                                            color: Colors.black,
-                                            fontSize: 15,
-                                            fontWeight: FontWeight.bold),
-                                      )),
-                                ],
-                              )
                             ],
                           ),
                         ),
