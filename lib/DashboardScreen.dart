@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:interest/Screens/Admin_Screen/U_registrationscreen.dart';
 import 'package:interest/Screens/Admin_Screen/A_Loginscreen.dart';
+import 'package:interest/Screens/Useer_Screen/U_Loginscreen.dart';
 
 class DashboardScreen extends StatelessWidget {
   const DashboardScreen({super.key});
@@ -73,10 +73,8 @@ class DashboardScreen extends StatelessWidget {
               ),
               TextButton(
                 onPressed: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => U_registrationscreen()));
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => U_Loginscreen()));
                 },
                 style: TextButton.styleFrom(
                     shape: RoundedRectangleBorder(

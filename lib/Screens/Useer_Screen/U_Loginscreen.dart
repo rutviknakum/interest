@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:interest/Screens/Useer_Screen/U_registration.dart';
 
-class A_Loginscreen extends StatefulWidget {
-  const A_Loginscreen({super.key});
+class U_Loginscreen extends StatefulWidget {
+  const U_Loginscreen({super.key});
 
   @override
-  State<A_Loginscreen> createState() => _A_LoginscreenState();
+  State<U_Loginscreen> createState() => _U_LoginscreenState();
 }
 
-class _A_LoginscreenState extends State<A_Loginscreen>
+class _U_LoginscreenState extends State<U_Loginscreen>
     with SingleTickerProviderStateMixin {
   var emailController = TextEditingController();
   var pwdController = TextEditingController();
@@ -75,7 +76,7 @@ class _A_LoginscreenState extends State<A_Loginscreen>
               return Align(
                 alignment: Alignment(0, _welcometextpos.value),
                 child: Text(
-                  'Welcome, Admin...!',
+                  'Welcome...!',
                   style: TextStyle(
                     fontSize: 40,
                     fontWeight: FontWeight.bold,
@@ -129,9 +130,9 @@ class _A_LoginscreenState extends State<A_Loginscreen>
                                   border: OutlineInputBorder(),
                                 ),
                               ),
-                              SizedBox(height: 30),
+                              SizedBox(height: 10),
                               SizedBox(
-                                width: 150,
+                                width: 160,
                                 height: 50,
                                 child: TextButton(
                                   onPressed: () {},
@@ -157,7 +158,7 @@ class _A_LoginscreenState extends State<A_Loginscreen>
                                         style: TextStyle(
                                             fontSize: 25,
                                             fontWeight: FontWeight.bold),
-                                      )
+                                      ),
                                     ],
                                   ),
                                 ),
@@ -169,6 +170,24 @@ class _A_LoginscreenState extends State<A_Loginscreen>
                                   ),
                                   TextButton(
                                       onPressed: () {},
+                                      child: Text(
+                                        "Forgot Password",
+                                        style: TextStyle(
+                                            color: Colors.black,
+                                            fontSize: 15,
+                                            fontWeight: FontWeight.bold),
+                                      )),
+                                  SizedBox(
+                                    width: 50,
+                                  ),
+                                  TextButton(
+                                      onPressed: () {
+                                        Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    U_registration()));
+                                      },
                                       style: TextButton.styleFrom(
                                         foregroundColor: Colors.black,
                                         shape: RoundedRectangleBorder(
@@ -177,7 +196,7 @@ class _A_LoginscreenState extends State<A_Loginscreen>
                                         ),
                                       ),
                                       child: Text(
-                                        "Forgot Password",
+                                        "New User",
                                         style: TextStyle(
                                             color: Colors.black,
                                             fontSize: 15,

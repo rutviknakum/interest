@@ -34,9 +34,10 @@ class _SplashscreenState extends State<Splashscreen> {
             curve: Curves.fastLinearToSlowEaseIn,
           ),
           Center(
-            child: Icon(
-              Icons.app_shortcut,
-              size: 100,
+            child: Image.asset(
+              'assets/images/Splash.png',
+              height: 200,
+              width: 200,
             ),
           ),
         ],
