@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:interest/Forgot_pwd.dart';
 
 class A_Loginscreen extends StatefulWidget {
   const A_Loginscreen({super.key});
@@ -168,7 +169,13 @@ class _A_LoginscreenState extends State<A_Loginscreen>
                                     width: 10,
                                   ),
                                   TextButton(
-                                      onPressed: () {},
+                                      onPressed: () {
+                                        Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    ForgotPwdScreen()));
+                                      },
                                       style: TextButton.styleFrom(
                                         foregroundColor: Colors.black,
                                         shape: RoundedRectangleBorder(
