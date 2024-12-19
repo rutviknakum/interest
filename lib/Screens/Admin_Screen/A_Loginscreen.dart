@@ -177,7 +177,7 @@ class _A_LoginscreenState extends State<A_Loginscreen>
                                         ),
                                       ),
                                       child: Text(
-                                        "Forgot Password",
+                                        "Forgot Password?!",
                                         style: TextStyle(
                                             color: Colors.black,
                                             fontSize: 15,
