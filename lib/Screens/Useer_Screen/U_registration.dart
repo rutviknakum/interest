@@ -22,7 +22,7 @@ class U_registration extends StatelessWidget {
               padding: const EdgeInsets.all(8),
               child: Material(
                 elevation: 8,
-                borderRadius: BorderRadius.circular(16),
+                borderRadius: BorderRadius.zero,
                 child: Padding(
                   padding: const EdgeInsets.all(24.0),
                   child: SingleChildScrollView(
@@ -39,7 +39,8 @@ class U_registration extends StatelessWidget {
                           decoration: InputDecoration(
                             labelText: "Name",
                             hintText: "Enter Your Name...!",
-                            border: OutlineInputBorder(),
+                            border: OutlineInputBorder(
+                                borderRadius: BorderRadius.zero),
                           ),
                         ),
                         SizedBox(height: 15),
@@ -47,7 +48,8 @@ class U_registration extends StatelessWidget {
                           decoration: InputDecoration(
                             labelText: "Email",
                             hintText: "Enter Your Email...!",
-                            border: OutlineInputBorder(),
+                            border: OutlineInputBorder(
+                                borderRadius: BorderRadius.zero),
                           ),
                         ),
                         SizedBox(height: 15),
@@ -55,7 +57,8 @@ class U_registration extends StatelessWidget {
                           decoration: InputDecoration(
                             labelText: "Phone Number",
                             hintText: "Enter Your PhoneNumber...!",
-                            border: OutlineInputBorder(),
+                            border: OutlineInputBorder(
+                                borderRadius: BorderRadius.zero),
                           ),
                         ),
                         SizedBox(height: 15),
@@ -64,7 +67,8 @@ class U_registration extends StatelessWidget {
                           decoration: InputDecoration(
                             labelText: "Password",
                             hintText: 'Enter your Password...!',
-                            border: OutlineInputBorder(),
+                            border: OutlineInputBorder(
+                                borderRadius: BorderRadius.zero),
                           ),
                         ),
                         SizedBox(height: 10),
@@ -73,7 +77,8 @@ class U_registration extends StatelessWidget {
                           decoration: InputDecoration(
                             labelText: "Password",
                             hintText: "Re-Type Password...!",
-                            border: OutlineInputBorder(),
+                            border: OutlineInputBorder(
+                                borderRadius: BorderRadius.zero),
                           ),
                         ),
                         SizedBox(height: 20),

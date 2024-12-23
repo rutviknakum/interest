@@ -18,28 +18,62 @@ class ForgotPwdScreen extends StatelessWidget {
         child: Align(
           alignment: Alignment.center,
           child: Padding(
-            padding: const EdgeInsets.all(8),
+            padding: const EdgeInsets.only(top: 95, left: 16, right: 16),
             child: Material(
               elevation: 8,
               borderRadius: BorderRadius.zero,
               child: Padding(
                 padding: const EdgeInsets.all(24),
-                child: Column(
-                  children: [
-                    Image.asset(
-                      'assets/images/Logo.png',
-                      height: 150,
-                      width: 150,
-                    ),
-                    SizedBox(height: 15),
-                    TextField(
-                      decoration: InputDecoration(
-                        labelText: "Email",
-                        hintText: "Enter Your Email...!",
-                        border: OutlineInputBorder(),
+                child: SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      Image.asset(
+                        'assets/images/Logo.png',
+                        height: 150,
+                        width: 150,
                       ),
-                    ),
-                  ],
+                      SizedBox(height: 20),
+                      Text(
+                          "Please Enter Your Mobile Number or e-mail to Receive verification code"),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      TextField(
+                        decoration: InputDecoration(
+                          labelText: "Email",
+                          hintText: "Enter Your Email...!",
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.zero),
+                        ),
+                      ),
+                      SizedBox(height: 11),
+                      Text("Or"),
+                      SizedBox(height: 11),
+                      TextField(
+                        decoration: InputDecoration(
+                          labelText: "Mobile Number",
+                          hintText: "Enter Your Mobile Number...!",
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.zero),
+                        ),
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      TextButton(
+                          onPressed: () {},
+                          style: TextButton.styleFrom(
+                              foregroundColor: Colors.white,
+                              backgroundColor: Colors.black,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.zero,
+                              )),
+                          child: Text(
+                            "Send",
+                            style: TextStyle(fontSize: 20),
+                          ))
+                    ],
+                  ),
                 ),
               ),
             ),

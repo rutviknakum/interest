@@ -165,7 +165,7 @@ class _U_LoginscreenState extends State<U_Loginscreen>
                                 ),
                               ),
                               SizedBox(
-                                height: 10,
+                                height: 5,
                               ),
                               Row(
                                 children: [
@@ -181,7 +181,7 @@ class _U_LoginscreenState extends State<U_Loginscreen>
                                         "Forgot Password.!?",
                                         style: TextStyle(
                                             // color: Colors.black,
-                                            fontSize: 15,
+                                            fontSize: 12,
                                             fontWeight: FontWeight.bold),
                                       )),
                                   SizedBox(
@@ -205,7 +205,7 @@ class _U_LoginscreenState extends State<U_Loginscreen>
                                         "New Registration..!?",
                                         style: TextStyle(
                                             //   color: Colors.black,
-                                            fontSize: 15,
+                                            fontSize: 12,
                                             fontWeight: FontWeight.bold),
                                       )),
                                 ],
