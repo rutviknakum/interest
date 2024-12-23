@@ -68,7 +68,7 @@ class A_verificaion_pwd extends StatelessWidget {
                                 "Verify",
                                 style: TextStyle(fontSize: 20),
                               )),
-                          Spacer(),
+                          Spacer(), //space apva mate use thay basically row nd column or center widget sathe,sizebox ni jgya e pn use kri skiea,eni roperty filx hoi apdne ketli space joie ena mate
                           Center(
                             child: TextButton(
                                 onPressed: () {},
