@@ -5,6 +5,9 @@ import 'package:interest/splashscreen.dart';
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   if (kIsWeb) {
     await Firebase.initializeApp(
         options: FirebaseOptions(

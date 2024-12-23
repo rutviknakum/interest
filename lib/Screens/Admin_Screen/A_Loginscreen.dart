@@ -1,5 +1,7 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:interest/Screens/Admin_Screen/A_Forgot_pwd.dart';
+import 'package:interest/firebase_services/auth_service.dart';
+import 'package:interest/splashscreen.dart';
 
 class A_Loginscreen extends StatefulWidget {
   const A_Loginscreen({super.key});
@@ -10,8 +12,9 @@ class A_Loginscreen extends StatefulWidget {
 
 class _A_LoginscreenState extends State<A_Loginscreen>
     with SingleTickerProviderStateMixin {
-  var emailController = TextEditingController();
-  var pwdController = TextEditingController();
+  final FirebaseServices _auth = FirebaseServices();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _pwdController = TextEditingController();
   late AnimationController _animation;
   late Animation<double> _welcometextpos;
   late Animation<double> _adminLoginScreenOpacity;
@@ -114,7 +117,7 @@ class _A_LoginscreenState extends State<A_Loginscreen>
                                 ),
                                 SizedBox(height: 16),
                                 TextField(
-                                  controller: emailController,
+                                  controller: _emailController,
                                   keyboardType: TextInputType.emailAddress,
                                   decoration: InputDecoration(
                                     labelText: "Username",
@@ -124,6 +127,7 @@ class _A_LoginscreenState extends State<A_Loginscreen>
                                 ),
                                 SizedBox(height: 20),
                                 TextField(
+                                  controller: _pwdController,
                                   obscureText: true,
                                   decoration: InputDecoration(
                                     labelText: "Password",
@@ -139,13 +143,7 @@ class _A_LoginscreenState extends State<A_Loginscreen>
                                       width: 10,
                                     ),
                                     TextButton(
-                                        onPressed: () {
-                                          Navigator.push(
-                                              context,
-                                              MaterialPageRoute(
-                                                  builder: (context) =>
-                                                      ForgotPwdScreen()));
-                                        },
+                                        onPressed: () {},
                                         style: TextButton.styleFrom(
                                           // foregroundColor: Colors.black,
                                           shape: RoundedRectangleBorder(
@@ -168,7 +166,20 @@ class _A_LoginscreenState extends State<A_Loginscreen>
                                   width: 150,
                                   height: 50,
                                   child: TextButton(
-                                    onPressed: () {},
+                                    onPressed: () async {
+                                      String email = _emailController.text;
+                                      String password = _pwdController.text;
+                                      User? user = await _auth.loginmethod(
+                                          email, password);
+                                      if (user != null) {
+                                        print("user is created");
+                                        Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    Splashscreen()));
+                                      }
+                                    },
                                     style: TextButton.styleFrom(
                                       foregroundColor: Colors.white,
                                       backgroundColor: Colors.black,
