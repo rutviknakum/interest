@@ -103,99 +103,101 @@ class _A_LoginscreenState extends State<A_Loginscreen>
                         borderRadius: BorderRadius.zero,
                         child: Padding(
                           padding: const EdgeInsets.all(24.0),
-                          child: Column(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              Image.asset(
-                                'assets/images/Logo.png',
-                                height: 200,
-                                width: 200,
-                              ),
-                              SizedBox(height: 16),
-                              TextField(
-                                controller: emailController,
-                                keyboardType: TextInputType.emailAddress,
-                                decoration: InputDecoration(
-                                  labelText: "Username",
-                                  hintText: 'Enter Your Username...!',
-                                  border: OutlineInputBorder(),
+                          child: SingleChildScrollView(
+                            child: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Image.asset(
+                                  'assets/images/Logo.png',
+                                  height: 200,
+                                  width: 200,
                                 ),
-                              ),
-                              SizedBox(height: 20),
-                              TextField(
-                                obscureText: true,
-                                decoration: InputDecoration(
-                                  labelText: "Password",
-                                  hintText: 'Enter Your Password...!',
-                                  border: OutlineInputBorder(),
-                                ),
-                              ),
-                              //  SizedBox(height: 30),
-                              Row(
-                                mainAxisAlignment: MainAxisAlignment.end,
-                                children: [
-                                  SizedBox(
-                                    width: 10,
+                                SizedBox(height: 16),
+                                TextField(
+                                  controller: emailController,
+                                  keyboardType: TextInputType.emailAddress,
+                                  decoration: InputDecoration(
+                                    labelText: "Username",
+                                    hintText: 'Enter Your Username...!',
+                                    border: OutlineInputBorder(),
                                   ),
-                                  TextButton(
-                                      onPressed: () {
-                                        Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: (context) =>
-                                                    ForgotPwdScreen()));
-                                      },
-                                      style: TextButton.styleFrom(
-                                        // foregroundColor: Colors.black,
-                                        shape: RoundedRectangleBorder(
-                                          borderRadius: BorderRadius.zero,
+                                ),
+                                SizedBox(height: 20),
+                                TextField(
+                                  obscureText: true,
+                                  decoration: InputDecoration(
+                                    labelText: "Password",
+                                    hintText: 'Enter Your Password...!',
+                                    border: OutlineInputBorder(),
+                                  ),
+                                ),
+                                //  SizedBox(height: 30),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  children: [
+                                    SizedBox(
+                                      width: 10,
+                                    ),
+                                    TextButton(
+                                        onPressed: () {
+                                          Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      ForgotPwdScreen()));
+                                        },
+                                        style: TextButton.styleFrom(
+                                          // foregroundColor: Colors.black,
+                                          shape: RoundedRectangleBorder(
+                                            borderRadius: BorderRadius.zero,
+                                          ),
                                         ),
+                                        child: Text(
+                                          "Forgot Password?!",
+                                          style: TextStyle(
+                                              // color: Colors.black,
+                                              fontSize: 15,
+                                              fontWeight: FontWeight.bold),
+                                        )),
+                                  ],
+                                ),
+                                SizedBox(
+                                  height: 10,
+                                ),
+                                SizedBox(
+                                  width: 150,
+                                  height: 50,
+                                  child: TextButton(
+                                    onPressed: () {},
+                                    style: TextButton.styleFrom(
+                                      foregroundColor: Colors.white,
+                                      backgroundColor: Colors.black,
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.zero,
                                       ),
-                                      child: Text(
-                                        "Forgot Password?!",
-                                        style: TextStyle(
-                                            // color: Colors.black,
-                                            fontSize: 15,
-                                            fontWeight: FontWeight.bold),
-                                      )),
-                                ],
-                              ),
-                              SizedBox(
-                                height: 10,
-                              ),
-                              SizedBox(
-                                width: 150,
-                                height: 50,
-                                child: TextButton(
-                                  onPressed: () {},
-                                  style: TextButton.styleFrom(
-                                    foregroundColor: Colors.white,
-                                    backgroundColor: Colors.black,
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.zero,
+                                    ),
+                                    child: Row(
+                                      children: [
+                                        Icon(
+                                          Icons.login,
+                                          size: 25,
+                                          color: Colors.white,
+                                        ),
+                                        SizedBox(
+                                          width: 10,
+                                        ),
+                                        Text(
+                                          "Login",
+                                          style: TextStyle(
+                                              fontSize: 25,
+                                              fontWeight: FontWeight.bold),
+                                        )
+                                      ],
                                     ),
                                   ),
-                                  child: Row(
-                                    children: [
-                                      Icon(
-                                        Icons.login,
-                                        size: 25,
-                                        color: Colors.white,
-                                      ),
-                                      SizedBox(
-                                        width: 10,
-                                      ),
-                                      Text(
-                                        "Login",
-                                        style: TextStyle(
-                                            fontSize: 25,
-                                            fontWeight: FontWeight.bold),
-                                      )
-                                    ],
-                                  ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
                         ),
                       ),

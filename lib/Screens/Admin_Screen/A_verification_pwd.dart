@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:interest/Screens/Admin_Screen/A_pwdscreen.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
 class A_verificaion_pwd extends StatelessWidget {
@@ -57,7 +58,12 @@ class A_verificaion_pwd extends StatelessWidget {
                       Row(
                         children: [
                           TextButton(
-                              onPressed: () {},
+                              onPressed: () {
+                                Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => A_pwdscreen()));
+                              },
                               style: TextButton.styleFrom(
                                   foregroundColor: Colors.white,
                                   backgroundColor: Colors.black,

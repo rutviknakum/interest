@@ -35,7 +35,7 @@ Widget appleLoginButton() {
       onPressed: () {},
       icon: Image.asset(
         'assets/images/apple.png',
-        fit: BoxFit.contain, // Add Google logo here
+        fit: BoxFit.contain,
         height: 50,
         // width: 30,
       ),

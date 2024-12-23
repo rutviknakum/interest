@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:interest/Screens/Admin_Screen/A_verification_pwd.dart';
 
-class ForgotPwdScreen extends StatelessWidget {
-  const ForgotPwdScreen({super.key});
+class A_pwdscreen extends StatelessWidget {
+  const A_pwdscreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -33,52 +32,33 @@ class ForgotPwdScreen extends StatelessWidget {
                         height: 150,
                         width: 150,
                       ),
-                      SizedBox(height: 20),
-                      Text(
-                          "Please Enter Your Mobile Number or e-mail to Receive verification code"),
-                      SizedBox(
-                        height: 20,
-                      ),
+                      SizedBox(height: 11),
                       TextField(
+                        obscureText: true,
                         decoration: InputDecoration(
-                          labelText: "Email",
-                          hintText: "Enter Your Email...!",
+                          labelText: "New Password",
+                          hintText: "Enter New Password...!",
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.zero),
-                          prefixIcon: Image.asset(
-                            'assets/images/gmail (1).png',
-                            fit: BoxFit.contain, // Add Google logo here
-                            height: 5,
-                          ),
+                          prefixIcon: Icon(Icons.password),
                         ),
                       ),
                       SizedBox(height: 11),
-                      Text(
-                        "Or",
-                        style: TextStyle(
-                            fontSize: 20, fontWeight: FontWeight.bold),
-                      ),
-                      SizedBox(height: 11),
                       TextField(
+                        obscureText: true,
                         decoration: InputDecoration(
-                          labelText: "Mobile Number",
-                          hintText: "Enter Your Mobile Number...!",
+                          labelText: "Confirm Password",
+                          hintText: "Enter Confirm Password...!",
                           border: OutlineInputBorder(
-                            borderRadius: BorderRadius.zero,
-                          ),
-                          prefixIcon: Icon(Icons.phone),
+                              borderRadius: BorderRadius.zero),
+                          prefixIcon: Icon(Icons.password),
                         ),
                       ),
                       SizedBox(
                         height: 20,
                       ),
                       TextButton(
-                          onPressed: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => A_verificaion_pwd()));
-                          },
+                          onPressed: () {},
                           style: TextButton.styleFrom(
                               foregroundColor: Colors.white,
                               backgroundColor: Colors.black,
@@ -86,7 +66,7 @@ class ForgotPwdScreen extends StatelessWidget {
                                 borderRadius: BorderRadius.zero,
                               )),
                           child: Text(
-                            "Send",
+                            "Submit",
                             style: TextStyle(fontSize: 20),
                           ))
                     ],
