@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:interest/Screens/Admin_Screen/A_verification_pwd.dart';
 
 class ForgotPwdScreen extends StatelessWidget {
   const ForgotPwdScreen({super.key});
@@ -61,7 +62,12 @@ class ForgotPwdScreen extends StatelessWidget {
                         height: 20,
                       ),
                       TextButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => A_verificaion_pwd()));
+                          },
                           style: TextButton.styleFrom(
                               foregroundColor: Colors.white,
                               backgroundColor: Colors.black,
