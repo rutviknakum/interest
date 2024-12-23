@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "621083151558",
+    "project_id": "interest-db",
+    "storage_bucket": "interest-db.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:621083151558:android:b2e1f41bef8a1ad9461bc7",
+        "android_client_info": {
+          "package_name": "com.example.interest"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDcVJ9EqIQlAY5Gi1eizGqrsaMNxI2Ix9A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
