@@ -1,9 +1,31 @@
 import 'package:flutter/material.dart';
 import 'package:interest/Screens/Admin_Screen/A_pwdscreen.dart';
+import 'package:interest/firebase_services/auth_service.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
-class A_verificaion_pwd extends StatelessWidget {
-  const A_verificaion_pwd({super.key});
+class A_verificaion_pwd extends StatefulWidget {
+  final String verificationid;
+  const A_verificaion_pwd({super.key, required this.verificationid});
+
+  @override
+  State<A_verificaion_pwd> createState() => _A_verificaion_pwdState();
+}
+
+class _A_verificaion_pwdState extends State<A_verificaion_pwd> {
+  final TextEditingController _otpController = TextEditingController();
+  final FirebaseServices _auth = FirebaseServices();
+  String _message = "";
+  void _verifyotp() async {
+    String? result =
+        await _auth.verifyPhoneOtp(widget.verificationid, _otpController.text);
+    setState(() {
+      _message = result ?? "errorr...!";
+    });
+    if (_message == "Phone Verification Successfull...!") {
+      Navigator.push(
+          context, MaterialPageRoute(builder: (context) => A_pwdscreen()));
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -42,6 +64,7 @@ class A_verificaion_pwd extends StatelessWidget {
                       PinCodeTextField(
                         appContext: context,
                         length: 4,
+                        controller: _otpController,
                         keyboardType: TextInputType.number,
                         enableActiveFill: false,
                         pinTheme: PinTheme(
@@ -58,12 +81,7 @@ class A_verificaion_pwd extends StatelessWidget {
                       Row(
                         children: [
                           TextButton(
-                              onPressed: () {
-                                Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => A_pwdscreen()));
-                              },
+                              onPressed: _verifyotp,
                               style: TextButton.styleFrom(
                                   foregroundColor: Colors.white,
                                   backgroundColor: Colors.black,

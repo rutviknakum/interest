@@ -1,7 +1,32 @@
 import 'package:flutter/material.dart';
+import 'package:interest/firebase_services/auth_service.dart';
 
-class A_pwdscreen extends StatelessWidget {
+class A_pwdscreen extends StatefulWidget {
   const A_pwdscreen({super.key});
+
+  @override
+  State<A_pwdscreen> createState() => _A_pwdscreenState();
+}
+
+class _A_pwdscreenState extends State<A_pwdscreen> {
+  final TextEditingController _newPasswordController = TextEditingController();
+  final TextEditingController _confirmPasswordController =
+      TextEditingController();
+  final FirebaseServices _auth = FirebaseServices();
+  String _message = "";
+
+  void _updatePassword() async {
+    if (_newPasswordController.text == _confirmPasswordController.text) {
+      String? result = await _auth.upadatePassword(_newPasswordController.text);
+      setState(() {
+        _message = result ?? "Error occurred.";
+      });
+    } else {
+      setState(() {
+        _message = "Passwords do not match!";
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -34,6 +59,7 @@ class A_pwdscreen extends StatelessWidget {
                       ),
                       SizedBox(height: 11),
                       TextField(
+                        controller: _newPasswordController,
                         obscureText: true,
                         decoration: InputDecoration(
                           labelText: "New Password",
@@ -45,6 +71,7 @@ class A_pwdscreen extends StatelessWidget {
                       ),
                       SizedBox(height: 11),
                       TextField(
+                        controller: _confirmPasswordController,
                         obscureText: true,
                         decoration: InputDecoration(
                           labelText: "Confirm Password",
@@ -58,7 +85,7 @@ class A_pwdscreen extends StatelessWidget {
                         height: 20,
                       ),
                       TextButton(
-                          onPressed: () {},
+                          onPressed: _updatePassword,
                           style: TextButton.styleFrom(
                               foregroundColor: Colors.white,
                               backgroundColor: Colors.black,
@@ -68,7 +95,9 @@ class A_pwdscreen extends StatelessWidget {
                           child: Text(
                             "Submit",
                             style: TextStyle(fontSize: 20),
-                          ))
+                          )),
+                      SizedBox(height: 20),
+                      Text(_message),
                     ],
                   ),
                 ),

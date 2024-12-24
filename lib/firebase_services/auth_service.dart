@@ -38,4 +38,47 @@ class FirebaseServices {
     }
     return null;
   }
+
+  Future<void> sendPhoneVerification(
+      String phoneno,
+      Function(String) onVerificationCompleted,
+      Function(String, int?) onCodeSent,
+      Function(String) onVerificationFailed) async {
+    await _auth.verifyPhoneNumber(
+      phoneNumber: phoneno,
+      verificationCompleted: (PhoneAuthCredential credential) async {
+        await _auth.signInWithCredential(credential);
+        onVerificationCompleted("verification done");
+      },
+      verificationFailed: (FirebaseAuthException e) {
+        onVerificationFailed(e.message ?? "phone no verification failed");
+      },
+      codeSent: (String verificationid, int? resendToken) {
+        onCodeSent(verificationid, resendToken);
+      },
+      codeAutoRetrievalTimeout: (String verificationid) {
+        print("Time out");
+      },
+    );
+  }
+
+  Future<String?> verifyPhoneOtp(String verificationid, String otp) async {
+    try {
+      final PhoneAuthCredential credential = PhoneAuthProvider.credential(
+          verificationId: verificationid, smsCode: otp);
+      await _auth.signInWithCredential(credential);
+      return "Phone Verification Successfull...!";
+    } catch (e) {
+      return "invalid otp ,try again...!";
+    }
+  }
+
+  Future<String?> upadatePassword(String newpassword) async {
+    try {
+      await _auth.currentUser?.updatePassword(newpassword);
+      return "password updated successfully...!";
+    } catch (e) {
+      return "falied to update password...!";
+    }
+  }
 }

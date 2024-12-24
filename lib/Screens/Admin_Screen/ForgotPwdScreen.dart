@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:interest/Screens/Admin_Screen/A_verification_pwd.dart';
 import 'package:interest/firebase_services/auth_service.dart';
 
 class ForgotPwdScreen extends StatefulWidget {
@@ -23,6 +24,29 @@ class _ForgotPwdScreenState extends State<ForgotPwdScreen> {
   }
 
   // Send reset phone
+  void _sendResetPhone() async {
+    await _auth.sendPhoneVerification(
+      _phoneController.text,
+      (message) {
+        setState(() {
+          _message = message;
+        });
+      },
+      (verificationid, resendToken) {
+        Navigator.push(
+            context,
+            MaterialPageRoute(
+                builder: (context) => A_verificaion_pwd(
+                      verificationid: verificationid,
+                    )));
+      },
+      (errorMessage) {
+        setState(() {
+          _message = errorMessage;
+        });
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -43,61 +67,65 @@ class _ForgotPwdScreenState extends State<ForgotPwdScreen> {
               borderRadius: BorderRadius.zero,
               child: Padding(
                 padding: const EdgeInsets.all(24),
-                child: Column(
-                  children: [
-                    Image.asset(
-                      'assets/images/Logo.png',
-                      height: 150,
-                      width: 150,
-                    ),
-                    SizedBox(height: 20),
-                    Text(
-                        "Please Enter Your Mobile Number or E-mail to Receive Verification Code"),
-                    SizedBox(height: 20),
-                    TextField(
-                      controller: _emailController,
-                      decoration: InputDecoration(
-                        labelText: "Email",
-                        hintText: "Enter Your Email...!",
-                        border:
-                            OutlineInputBorder(borderRadius: BorderRadius.zero),
-                        prefixIcon: Icon(Icons.email),
+                child: SingleChildScrollView(
+                  child: Column(
+                    children: [
+                      Image.asset(
+                        'assets/images/Logo.png',
+                        height: 150,
+                        width: 150,
                       ),
-                    ),
-                    SizedBox(height: 20),
-                    Text("Or",
-                        style: TextStyle(
-                            fontSize: 20, fontWeight: FontWeight.bold)),
-                    SizedBox(height: 20),
-                    TextField(
-                      controller: _phoneController,
-                      decoration: InputDecoration(
-                        labelText: "Mobile Number",
-                        hintText: "Enter Your Mobile Number...!",
-                        border:
-                            OutlineInputBorder(borderRadius: BorderRadius.zero),
-                        prefixIcon: Icon(Icons.phone),
-                      ),
-                    ),
-                    SizedBox(height: 20),
-                    TextButton(
-                      onPressed: () {
-                        if (_emailController.text.isNotEmpty) {
-                          _sendResetEmail();
-                        }
-                      },
-                      style: TextButton.styleFrom(
-                        foregroundColor: Colors.white,
-                        backgroundColor: Colors.black,
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.zero,
+                      SizedBox(height: 20),
+                      Text(
+                          "Please Enter Your Mobile Number or E-mail to Receive Verification Code"),
+                      SizedBox(height: 20),
+                      TextField(
+                        controller: _emailController,
+                        decoration: InputDecoration(
+                          labelText: "Email",
+                          hintText: "Enter Your Email...!",
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.zero),
+                          prefixIcon: Icon(Icons.email),
                         ),
                       ),
-                      child: Text("Send", style: TextStyle(fontSize: 20)),
-                    ),
-                    SizedBox(height: 20),
-                    Text(_message), // Display any messages
-                  ],
+                      SizedBox(height: 20),
+                      Text("Or",
+                          style: TextStyle(
+                              fontSize: 20, fontWeight: FontWeight.bold)),
+                      SizedBox(height: 20),
+                      TextField(
+                        controller: _phoneController,
+                        decoration: InputDecoration(
+                          labelText: "Mobile Number",
+                          hintText: "Enter Your Mobile Number...!",
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.zero),
+                          prefixIcon: Icon(Icons.phone),
+                        ),
+                      ),
+                      SizedBox(height: 20),
+                      TextButton(
+                        onPressed: () {
+                          if (_emailController.text.isNotEmpty) {
+                            _sendResetEmail();
+                          } else if (_phoneController.text.isNotEmpty) {
+                            _sendResetPhone();
+                          }
+                        },
+                        style: TextButton.styleFrom(
+                          foregroundColor: Colors.white,
+                          backgroundColor: Colors.black,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.zero,
+                          ),
+                        ),
+                        child: Text("Send", style: TextStyle(fontSize: 20)),
+                      ),
+                      SizedBox(height: 20),
+                      Text(_message), // Display any messages
+                    ],
+                  ),
                 ),
               ),
             ),
