@@ -1,7 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:interest/Screens/Admin_Screen/A_pwdscreen.dart';
+import 'package:interest/Screens/Admin_Screen/ForgotPwdScreen.dart';
 import 'package:interest/firebase_services/auth_service.dart';
-import 'package:interest/splashscreen.dart';
 
 class A_Loginscreen extends StatefulWidget {
   const A_Loginscreen({super.key});
@@ -143,7 +144,13 @@ class _A_LoginscreenState extends State<A_Loginscreen>
                                       width: 10,
                                     ),
                                     TextButton(
-                                        onPressed: () {},
+                                        onPressed: () {
+                                          Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      ForgotPwdScreen()));
+                                        },
                                         style: TextButton.styleFrom(
                                           // foregroundColor: Colors.black,
                                           shape: RoundedRectangleBorder(
@@ -172,12 +179,12 @@ class _A_LoginscreenState extends State<A_Loginscreen>
                                       User? user = await _auth.loginmethod(
                                           email, password);
                                       if (user != null) {
-                                        print("user is created");
+                                        print("loggin success");
                                         Navigator.push(
                                             context,
                                             MaterialPageRoute(
                                                 builder: (context) =>
-                                                    Splashscreen()));
+                                                    A_pwdscreen()));
                                       }
                                     },
                                     style: TextButton.styleFrom(

@@ -1,5 +1,8 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:interest/Screens/Useer_Screen/U_mainscreen.dart';
 import 'package:interest/Screens/Useer_Screen/U_registration.dart';
+import 'package:interest/firebase_services/auth_service.dart';
 
 class U_Loginscreen extends StatefulWidget {
   const U_Loginscreen({super.key});
@@ -10,12 +13,38 @@ class U_Loginscreen extends StatefulWidget {
 
 class _U_LoginscreenState extends State<U_Loginscreen>
     with SingleTickerProviderStateMixin {
-  var emailController = TextEditingController();
-  var pwdController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _pwdController = TextEditingController();
   late AnimationController _animation;
   late Animation<double> _welcometextpos;
   late Animation<double> _adminLoginScreenOpacity;
+  final FirebaseServices _auth = FirebaseServices();
   bool _ShowLoginScreen = false;
+
+  void _loginUser() async {
+    String email = _emailController.text.trim();
+    String password = _pwdController.text.trim();
+
+    User? user = await _auth.loginmethod(email, password);
+
+    if (user != null) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text("Login successful!")),
+      );
+
+      // Navigate to another screen (e.g., HomePage)
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+            builder: (context) =>
+                U_mainscreen()), // Replace HomePage with your destination widget
+      );
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text("Login failed. Please check your credentials.")),
+      );
+    }
+  }
 
   @override
   void initState() {
@@ -114,7 +143,7 @@ class _U_LoginscreenState extends State<U_Loginscreen>
                               ),
                               SizedBox(height: 16),
                               TextField(
-                                controller: emailController,
+                                controller: _emailController,
                                 keyboardType: TextInputType.emailAddress,
                                 decoration: InputDecoration(
                                   labelText: "Username",
@@ -124,6 +153,7 @@ class _U_LoginscreenState extends State<U_Loginscreen>
                               ),
                               SizedBox(height: 20),
                               TextField(
+                                controller: _pwdController,
                                 obscureText: true,
                                 decoration: InputDecoration(
                                   labelText: "Password",
@@ -136,7 +166,7 @@ class _U_LoginscreenState extends State<U_Loginscreen>
                                 width: 150,
                                 height: 50,
                                 child: TextButton(
-                                  onPressed: () {},
+                                  onPressed: _loginUser,
                                   style: TextButton.styleFrom(
                                     foregroundColor: Colors.white,
                                     backgroundColor: Colors.black,
