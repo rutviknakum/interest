@@ -63,7 +63,7 @@ class _A_verificaion_pwdState extends State<A_verificaion_pwd> {
                       ),
                       PinCodeTextField(
                         appContext: context,
-                        length: 4,
+                        length: 6,
                         controller: _otpController,
                         keyboardType: TextInputType.number,
                         enableActiveFill: false,
