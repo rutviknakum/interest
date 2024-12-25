@@ -70,8 +70,8 @@ class _A_verificaion_pwdState extends State<A_verificaion_pwd> {
                         pinTheme: PinTheme(
                           shape: PinCodeFieldShape.box,
                           borderRadius: BorderRadius.zero,
-                          fieldHeight: 50,
-                          fieldWidth: 50,
+                          fieldHeight: 10,
+                          fieldWidth: 10,
                           activeFillColor: Colors.white,
                         ),
                       ),
