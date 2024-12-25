@@ -38,9 +38,16 @@ android {
             signingConfig = signingConfigs.debug
         }
     }
+    dependencies {
+    implementation 'com.google.firebase:firebase-auth:21.0.1' // Replace with the correct version
+    implementation 'com.google.firebase:firebase-analytics:21.0.0' // Example Firebase dependency
+    // Other dependencies you may have
+}
+
 }
 
 flutter {
     source = "../.."
 }
 apply plugin: 'com.google.gms.google-services'
+
