@@ -10,7 +10,7 @@ class U_mainscreen extends StatefulWidget {
 class _U_mainscreenState extends State<U_mainscreen> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       body: Center(child: Text("welcome users")),
     );
   }

@@ -12,16 +12,16 @@ Widget googleLoginButton() {
         height: 50,
         // width: 30,
       ),
-      label: Text('Login with Google',
+      label: const Text('Login with Google',
           style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
       style: ElevatedButton.styleFrom(
         backgroundColor: Colors.white,
         foregroundColor: Colors.black,
-        shape: RoundedRectangleBorder(
+        shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.zero,
           side: BorderSide(color: Colors.grey),
         ),
-        padding: EdgeInsets.symmetric(vertical: 12, horizontal: 20),
+        padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 20),
       ),
     ),
   );
@@ -39,18 +39,18 @@ Widget appleLoginButton() {
         height: 50,
         // width: 30,
       ),
-      label: Text(
+      label: const Text(
         'Login with Apple',
         style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
       ),
       style: ElevatedButton.styleFrom(
         backgroundColor: Colors.white,
         foregroundColor: Colors.black,
-        shape: RoundedRectangleBorder(
+        shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.zero,
           side: BorderSide(color: Colors.grey),
         ),
-        padding: EdgeInsets.symmetric(vertical: 12, horizontal: 20),
+        padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 20),
       ),
     ),
   );

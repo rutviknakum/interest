@@ -30,12 +30,13 @@ class CustomSquareButton extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               Icon(icon, size: 30, color: Colors.white),
-              SizedBox(
+              const SizedBox(
                 width: 8,
               ),
               Text(
                 text,
-                style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                style:
+                    const TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
               ),
             ],
           ),

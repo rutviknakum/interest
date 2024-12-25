@@ -21,7 +21,7 @@ class DashboardScreen extends StatelessWidget {
       body: Container(
         height: double.infinity,
         width: double.infinity,
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
             gradient: LinearGradient(
           colors: [Color(0xffa1c4fd), Color(0xffc2e9fb)],
         )),
@@ -42,10 +42,10 @@ class DashboardScreen extends StatelessWidget {
                                 builder: (context) => A_Loginscreen()));
                       },
                       style: TextButton.styleFrom(
-                          shape: RoundedRectangleBorder(
+                          shape: const RoundedRectangleBorder(
                         borderRadius: BorderRadius.zero,
                       )),
-                      child: Row(
+                      child: const Row(
                         children: [
                           Icon(
                             Icons.admin_panel_settings,
@@ -68,7 +68,7 @@ class DashboardScreen extends StatelessWidget {
                   ),
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 width: 50,
               ),
               TextButton(
@@ -79,7 +79,7 @@ class DashboardScreen extends StatelessWidget {
                 style: TextButton.styleFrom(
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(8))),
-                child: Row(
+                child: const Row(
                   children: [
                     Icon(
                       Icons.account_box_rounded,

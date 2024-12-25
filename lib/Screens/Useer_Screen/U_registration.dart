@@ -226,8 +226,8 @@ class _U_registrationState extends State<U_registration> {
       User? user =
           await _firebaseServices.Usigninmethod(name, email, phoneno, password);
       if (user != null) {
-        ScaffoldMessenger.of(context)
-            .showSnackBar(SnackBar(content: Text("Registration successful!")));
+        ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(content: Text("Registration successful!")));
         Navigator.pushReplacement(
           context,
           MaterialPageRoute(
@@ -237,7 +237,8 @@ class _U_registrationState extends State<U_registration> {
         // Navigate to another screen or clear form fields
       } else {
         ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text("Registration failed. Please try again.")),
+          const SnackBar(
+              content: Text("Registration failed. Please try again.")),
         );
       }
     }
@@ -249,7 +250,7 @@ class _U_registrationState extends State<U_registration> {
       body: Container(
         height: double.infinity,
         width: double.infinity,
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           gradient: LinearGradient(
             colors: [Color(0xffa1c4fd), Color(0xffc2e9fb)],
           ),
@@ -274,11 +275,11 @@ class _U_registrationState extends State<U_registration> {
                           height: 150,
                           width: 150,
                         ),
-                        SizedBox(height: 15),
+                        const SizedBox(height: 15),
                         // Name Field
                         TextFormField(
                           controller: _nameController,
-                          decoration: InputDecoration(
+                          decoration: const InputDecoration(
                             labelText: "Name",
                             hintText: "Enter Your Name",
                             border: OutlineInputBorder(
@@ -291,11 +292,11 @@ class _U_registrationState extends State<U_registration> {
                             return null;
                           },
                         ),
-                        SizedBox(height: 15),
+                        const SizedBox(height: 15),
                         // Email Field
                         TextFormField(
                           controller: _emailController,
-                          decoration: InputDecoration(
+                          decoration: const InputDecoration(
                             labelText: "Email",
                             hintText: "Enter Your Email",
                             border: OutlineInputBorder(
@@ -312,11 +313,11 @@ class _U_registrationState extends State<U_registration> {
                             return null;
                           },
                         ),
-                        SizedBox(height: 15),
+                        const SizedBox(height: 15),
                         // Phone Number Field
                         TextFormField(
                           controller: _pnoController,
-                          decoration: InputDecoration(
+                          decoration: const InputDecoration(
                             labelText: "Phone Number",
                             hintText: "Enter Your Phone Number",
                             border: OutlineInputBorder(
@@ -332,12 +333,12 @@ class _U_registrationState extends State<U_registration> {
                             return null;
                           },
                         ),
-                        SizedBox(height: 15),
+                        const SizedBox(height: 15),
                         // Password Field
                         TextFormField(
                           controller: _pwdController,
                           obscureText: true,
-                          decoration: InputDecoration(
+                          decoration: const InputDecoration(
                             labelText: "Password",
                             hintText: "Enter Your Password",
                             border: OutlineInputBorder(
@@ -353,12 +354,12 @@ class _U_registrationState extends State<U_registration> {
                             return null;
                           },
                         ),
-                        SizedBox(height: 15),
+                        const SizedBox(height: 15),
                         // Retype Password Field
                         TextFormField(
                           controller: _retypePwdController,
                           obscureText: true,
-                          decoration: InputDecoration(
+                          decoration: const InputDecoration(
                             labelText: "Re-Type Password",
                             hintText: "Enter Your Password Again",
                             border: OutlineInputBorder(
@@ -374,7 +375,7 @@ class _U_registrationState extends State<U_registration> {
                             return null;
                           },
                         ),
-                        SizedBox(height: 20),
+                        const SizedBox(height: 20),
                         // Register Button
                         SizedBox(
                           width: 175,
@@ -384,11 +385,11 @@ class _U_registrationState extends State<U_registration> {
                             style: TextButton.styleFrom(
                               foregroundColor: Colors.white,
                               backgroundColor: Colors.black,
-                              shape: RoundedRectangleBorder(
+                              shape: const RoundedRectangleBorder(
                                 borderRadius: BorderRadius.zero,
                               ),
                             ),
-                            child: Row(
+                            child: const Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Icon(Icons.app_registration,

@@ -54,7 +54,7 @@ class _ForgotPwdScreenState extends State<ForgotPwdScreen> {
       body: Container(
         height: double.infinity,
         width: double.infinity,
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           gradient: LinearGradient(
             colors: [Color(0xffa1c4fd), Color(0xffc2e9fb)],
           ),
@@ -75,13 +75,13 @@ class _ForgotPwdScreenState extends State<ForgotPwdScreen> {
                         height: 150,
                         width: 150,
                       ),
-                      SizedBox(height: 20),
-                      Text(
+                      const SizedBox(height: 20),
+                      const Text(
                           "Please Enter Your Mobile Number or E-mail to Receive Verification Code"),
-                      SizedBox(height: 20),
+                      const SizedBox(height: 20),
                       TextField(
                         controller: _emailController,
-                        decoration: InputDecoration(
+                        decoration: const InputDecoration(
                           labelText: "Email",
                           hintText: "Enter Your Email...!",
                           border: OutlineInputBorder(
@@ -89,14 +89,14 @@ class _ForgotPwdScreenState extends State<ForgotPwdScreen> {
                           prefixIcon: Icon(Icons.email),
                         ),
                       ),
-                      SizedBox(height: 20),
-                      Text("Or",
+                      const SizedBox(height: 20),
+                      const Text("Or",
                           style: TextStyle(
                               fontSize: 20, fontWeight: FontWeight.bold)),
-                      SizedBox(height: 20),
+                      const SizedBox(height: 20),
                       TextField(
                         controller: _phoneController,
-                        decoration: InputDecoration(
+                        decoration: const InputDecoration(
                           labelText: "Mobile Number",
                           hintText: "Enter Your Mobile Number...!",
                           border: OutlineInputBorder(
@@ -104,7 +104,7 @@ class _ForgotPwdScreenState extends State<ForgotPwdScreen> {
                           prefixIcon: Icon(Icons.phone),
                         ),
                       ),
-                      SizedBox(height: 20),
+                      const SizedBox(height: 20),
                       TextButton(
                         onPressed: () {
                           if (_emailController.text.isNotEmpty) {
@@ -116,13 +116,13 @@ class _ForgotPwdScreenState extends State<ForgotPwdScreen> {
                         style: TextButton.styleFrom(
                           foregroundColor: Colors.white,
                           backgroundColor: Colors.black,
-                          shape: RoundedRectangleBorder(
+                          shape: const RoundedRectangleBorder(
                             borderRadius: BorderRadius.zero,
                           ),
                         ),
-                        child: Text("Send", style: TextStyle(fontSize: 20)),
+                        child: const Text("Send", style: TextStyle(fontSize: 20)),
                       ),
-                      SizedBox(height: 20),
+                      const SizedBox(height: 20),
                       Text(_message), // Display any messages
                     ],
                   ),

@@ -34,7 +34,7 @@ class _A_pwdscreenState extends State<A_pwdscreen> {
         body: Container(
       height: double.infinity,
       width: double.infinity,
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
           gradient: LinearGradient(
         colors: [Color(0xffa1c4fd), Color(0xffc2e9fb)],
       )),
@@ -57,11 +57,11 @@ class _A_pwdscreenState extends State<A_pwdscreen> {
                         height: 150,
                         width: 150,
                       ),
-                      SizedBox(height: 11),
+                      const SizedBox(height: 11),
                       TextField(
                         controller: _newPasswordController,
                         obscureText: true,
-                        decoration: InputDecoration(
+                        decoration: const InputDecoration(
                           labelText: "New Password",
                           hintText: "Enter New Password...!",
                           border: OutlineInputBorder(
@@ -69,11 +69,11 @@ class _A_pwdscreenState extends State<A_pwdscreen> {
                           prefixIcon: Icon(Icons.password),
                         ),
                       ),
-                      SizedBox(height: 11),
+                      const SizedBox(height: 11),
                       TextField(
                         controller: _confirmPasswordController,
                         obscureText: true,
-                        decoration: InputDecoration(
+                        decoration: const InputDecoration(
                           labelText: "Confirm Password",
                           hintText: "Enter Confirm Password...!",
                           border: OutlineInputBorder(
@@ -81,7 +81,7 @@ class _A_pwdscreenState extends State<A_pwdscreen> {
                           prefixIcon: Icon(Icons.password),
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
                       TextButton(
@@ -89,14 +89,14 @@ class _A_pwdscreenState extends State<A_pwdscreen> {
                           style: TextButton.styleFrom(
                               foregroundColor: Colors.white,
                               backgroundColor: Colors.black,
-                              shape: RoundedRectangleBorder(
+                              shape: const RoundedRectangleBorder(
                                 borderRadius: BorderRadius.zero,
                               )),
-                          child: Text(
+                          child: const Text(
                             "Submit",
                             style: TextStyle(fontSize: 20),
                           )),
-                      SizedBox(height: 20),
+                      const SizedBox(height: 20),
                       Text(_message),
                     ],
                   ),

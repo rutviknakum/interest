@@ -29,7 +29,7 @@ class _U_LoginscreenState extends State<U_Loginscreen>
 
     if (user != null) {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text("Login successful!")),
+        const SnackBar(content: Text("Login successful!")),
       );
 
       // Navigate to another screen (e.g., HomePage)
@@ -41,7 +41,8 @@ class _U_LoginscreenState extends State<U_Loginscreen>
       );
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text("Login failed. Please check your credentials.")),
+        const SnackBar(
+            content: Text("Login failed. Please check your credentials.")),
       );
     }
   }
@@ -50,12 +51,12 @@ class _U_LoginscreenState extends State<U_Loginscreen>
   void initState() {
     super.initState();
     _animation =
-        AnimationController(vsync: this, duration: Duration(seconds: 3));
+        AnimationController(vsync: this, duration: const Duration(seconds: 3));
 //position of welcome text
     _welcometextpos = Tween<double>(begin: 0.5, end: -0.6).animate(
         CurvedAnimation(
             parent: _animation,
-            curve: Interval(0.0, 0.5, curve: Curves.easeInOut)));
+            curve: const Interval(0.0, 0.5, curve: Curves.easeInOut)));
     //opacity
     _adminLoginScreenOpacity = Tween<double>(
       begin: 0.0, // Fully transparent
@@ -63,7 +64,7 @@ class _U_LoginscreenState extends State<U_Loginscreen>
     ).animate(
       CurvedAnimation(
         parent: _animation,
-        curve: Interval(0.4, 1.0, curve: Curves.easeIn),
+        curve: const Interval(0.4, 1.0, curve: Curves.easeIn),
       ),
     );
 
@@ -92,7 +93,7 @@ class _U_LoginscreenState extends State<U_Loginscreen>
           Container(
             height: double.infinity,
             width: double.infinity,
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
               gradient: LinearGradient(
                 colors: [Color(0xffa1c4fd), Color(0xffc2e9fb)],
               ),
@@ -104,7 +105,7 @@ class _U_LoginscreenState extends State<U_Loginscreen>
             builder: (context, child) {
               return Align(
                 alignment: Alignment(0, _welcometextpos.value),
-                child: Text(
+                child: const Text(
                   'Welcome...!',
                   style: TextStyle(
                     fontSize: 40,
@@ -141,27 +142,27 @@ class _U_LoginscreenState extends State<U_Loginscreen>
                                 height: 200,
                                 width: 200,
                               ),
-                              SizedBox(height: 16),
+                              const SizedBox(height: 16),
                               TextField(
                                 controller: _emailController,
                                 keyboardType: TextInputType.emailAddress,
-                                decoration: InputDecoration(
+                                decoration: const InputDecoration(
                                   labelText: "Username",
                                   hintText: 'Enter Your Username...!',
                                   border: OutlineInputBorder(),
                                 ),
                               ),
-                              SizedBox(height: 20),
+                              const SizedBox(height: 20),
                               TextField(
                                 controller: _pwdController,
                                 obscureText: true,
-                                decoration: InputDecoration(
+                                decoration: const InputDecoration(
                                   labelText: "Password",
                                   hintText: 'Enter Your Password...!',
                                   border: OutlineInputBorder(),
                                 ),
                               ),
-                              SizedBox(height: 20),
+                              const SizedBox(height: 20),
                               SizedBox(
                                 width: 150,
                                 height: 50,
@@ -170,11 +171,11 @@ class _U_LoginscreenState extends State<U_Loginscreen>
                                   style: TextButton.styleFrom(
                                     foregroundColor: Colors.white,
                                     backgroundColor: Colors.black,
-                                    shape: RoundedRectangleBorder(
+                                    shape: const RoundedRectangleBorder(
                                       borderRadius: BorderRadius.zero,
                                     ),
                                   ),
-                                  child: Row(
+                                  child: const Row(
                                     children: [
                                       Icon(
                                         Icons.login,
@@ -194,7 +195,7 @@ class _U_LoginscreenState extends State<U_Loginscreen>
                                   ),
                                 ),
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 5,
                               ),
                               Row(
@@ -203,18 +204,18 @@ class _U_LoginscreenState extends State<U_Loginscreen>
                                       onPressed: () {},
                                       style: TextButton.styleFrom(
                                         // foregroundColor: Colors.black,
-                                        shape: RoundedRectangleBorder(
+                                        shape: const RoundedRectangleBorder(
                                           borderRadius: BorderRadius.zero,
                                         ),
                                       ),
-                                      child: Text(
+                                      child: const Text(
                                         "Forgot Password.!?",
                                         style: TextStyle(
                                             // color: Colors.black,
                                             fontSize: 12,
                                             fontWeight: FontWeight.bold),
                                       )),
-                                  SizedBox(
+                                  const SizedBox(
                                     width: 5,
                                   ),
                                   TextButton(
@@ -227,11 +228,11 @@ class _U_LoginscreenState extends State<U_Loginscreen>
                                       },
                                       style: TextButton.styleFrom(
                                         // foregroundColor: Colors.black,
-                                        shape: RoundedRectangleBorder(
+                                        shape: const RoundedRectangleBorder(
                                           borderRadius: BorderRadius.zero,
                                         ),
                                       ),
-                                      child: Text(
+                                      child: const Text(
                                         "New Registration..!?",
                                         style: TextStyle(
                                             //   color: Colors.black,

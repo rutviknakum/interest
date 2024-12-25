@@ -33,7 +33,7 @@ class _A_verificaion_pwdState extends State<A_verificaion_pwd> {
         body: Container(
       height: double.infinity,
       width: double.infinity,
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
           gradient: LinearGradient(
         colors: [Color(0xffa1c4fd), Color(0xffc2e9fb)],
       )),
@@ -56,9 +56,9 @@ class _A_verificaion_pwdState extends State<A_verificaion_pwd> {
                         height: 150,
                         width: 150,
                       ),
-                      Text(
+                      const Text(
                           "please enter verification code we will send you to email or phone number"),
-                      SizedBox(
+                      const SizedBox(
                         height: 12,
                       ),
                       PinCodeTextField(
@@ -75,7 +75,7 @@ class _A_verificaion_pwdState extends State<A_verificaion_pwd> {
                           activeFillColor: Colors.white,
                         ),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 20,
                       ),
                       Row(
@@ -85,24 +85,24 @@ class _A_verificaion_pwdState extends State<A_verificaion_pwd> {
                               style: TextButton.styleFrom(
                                   foregroundColor: Colors.white,
                                   backgroundColor: Colors.black,
-                                  shape: RoundedRectangleBorder(
+                                  shape: const RoundedRectangleBorder(
                                     borderRadius: BorderRadius.zero,
                                   )),
-                              child: Text(
+                              child: const Text(
                                 "Verify",
                                 style: TextStyle(fontSize: 20),
                               )),
-                          Spacer(), //space apva mate use thay basically row nd column or center widget sathe,sizebox ni jgya e pn use kri skiea,eni roperty filx hoi apdne ketli space joie ena mate
+                          const Spacer(), //space apva mate use thay basically row nd column or center widget sathe,sizebox ni jgya e pn use kri skiea,eni roperty filx hoi apdne ketli space joie ena mate
                           Center(
                             child: TextButton(
                                 onPressed: () {},
                                 style: TextButton.styleFrom(
                                     foregroundColor: Colors.white,
                                     backgroundColor: Colors.black,
-                                    shape: RoundedRectangleBorder(
+                                    shape: const RoundedRectangleBorder(
                                       borderRadius: BorderRadius.zero,
                                     )),
-                                child: Text("resend code",
+                                child: const Text("resend code",
                                     style: TextStyle(fontSize: 20))),
                           )
                         ],
