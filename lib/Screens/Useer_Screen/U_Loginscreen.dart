@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:interest/Screens/Useer_Screen/U_forgotpwd.dart';
 import 'package:interest/Screens/Useer_Screen/U_mainscreen.dart';
 import 'package:interest/Screens/Useer_Screen/U_registration.dart';
 import 'package:interest/firebase_services/auth_service.dart';
@@ -201,7 +202,13 @@ class _U_LoginscreenState extends State<U_Loginscreen>
                               Row(
                                 children: [
                                   TextButton(
-                                      onPressed: () {},
+                                      onPressed: () {
+                                        Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    U_forgotpwd()));
+                                      },
                                       style: TextButton.styleFrom(
                                         // foregroundColor: Colors.black,
                                         shape: const RoundedRectangleBorder(
