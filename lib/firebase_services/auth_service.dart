@@ -79,4 +79,11 @@ class FirebaseServices {
       return "falied to update password...!";
     }
   }
+
+  Future<void> signout() async {
+    try {
+      await _auth.signOut();
+      // ignore: empty_catches
+    } catch (e) {}
+  }
 }
