@@ -75,12 +75,12 @@ class _A_profilescreenState extends State<A_profilescreen> {
                 await _auth.signOut(); // Log out the user
                 // Optionally, navigate to the login screen after logout
               },
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.red, // Red color for logout button
+              ),
               child: const Text(
                 'Logout',
                 style: TextStyle(fontSize: 16),
-              ),
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.red, // Red color for logout button
               ),
             ),
           ],
