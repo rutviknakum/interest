@@ -20,6 +20,7 @@ class _A_LoginscreenState extends State<A_Loginscreen>
   late Animation<double> _welcometextpos;
   late Animation<double> _adminLoginScreenOpacity;
   bool _ShowLoginScreen = false;
+  bool ispwdvisible = false;
 
   @override
   void initState() {
@@ -129,11 +130,23 @@ class _A_LoginscreenState extends State<A_Loginscreen>
                                 const SizedBox(height: 20),
                                 TextField(
                                   controller: _pwdController,
-                                  obscureText: true,
-                                  decoration: const InputDecoration(
+                                  obscureText: !ispwdvisible,
+                                  decoration: InputDecoration(
                                     labelText: "Password",
                                     hintText: 'Enter Your Password...!',
-                                    border: OutlineInputBorder(),
+                                    //prefixIcon: const Icon(Icons.lock),
+                                    suffixIcon: IconButton(
+                                        onPressed: () {
+                                          setState(() {
+                                            ispwdvisible = !ispwdvisible;
+                                          });
+                                        },
+                                        icon: Icon(
+                                          ispwdvisible
+                                              ? Icons.visibility
+                                              : Icons.visibility_off,
+                                        )),
+                                    border: const OutlineInputBorder(),
                                   ),
                                 ),
                                 //  SizedBox(height: 30),

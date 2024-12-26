@@ -21,6 +21,7 @@ class _U_LoginscreenState extends State<U_Loginscreen>
   late Animation<double> _adminLoginScreenOpacity;
   final FirebaseServices _auth = FirebaseServices();
   bool _ShowLoginScreen = false;
+  bool ispwdvisible = false;
 
   void _loginUser() async {
     String email = _emailController.text.trim();
@@ -156,11 +157,22 @@ class _U_LoginscreenState extends State<U_Loginscreen>
                               const SizedBox(height: 20),
                               TextField(
                                 controller: _pwdController,
-                                obscureText: true,
-                                decoration: const InputDecoration(
+                                obscureText: !ispwdvisible,
+                                decoration: InputDecoration(
                                   labelText: "Password",
                                   hintText: 'Enter Your Password...!',
-                                  border: OutlineInputBorder(),
+                                  suffixIcon: IconButton(
+                                      onPressed: () {
+                                        setState(() {
+                                          ispwdvisible = !ispwdvisible;
+                                        });
+                                      },
+                                      icon: Icon(
+                                        ispwdvisible
+                                            ? Icons.visibility
+                                            : Icons.visibility_off,
+                                      )),
+                                  border: const OutlineInputBorder(),
                                 ),
                               ),
                               const SizedBox(height: 20),

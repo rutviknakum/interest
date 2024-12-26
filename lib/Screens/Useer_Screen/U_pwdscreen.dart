@@ -14,6 +14,7 @@ class _U_pwdscreenState extends State<U_pwdscreen> {
       TextEditingController();
   final FirebaseServices _auth = FirebaseServices();
   String _message = "";
+  bool ispwdvisible = false;
 
   void _updatePassword() async {
     if (_newPasswordController.text == _confirmPasswordController.text) {
@@ -60,13 +61,24 @@ class _U_pwdscreenState extends State<U_pwdscreen> {
                       const SizedBox(height: 11),
                       TextField(
                         controller: _newPasswordController,
-                        obscureText: true,
-                        decoration: const InputDecoration(
+                        obscureText: !ispwdvisible,
+                        decoration: InputDecoration(
                           labelText: "New Password",
                           hintText: "Enter New Password...!",
-                          border: OutlineInputBorder(
+                          suffixIcon: IconButton(
+                              onPressed: () {
+                                setState(() {
+                                  ispwdvisible = !ispwdvisible;
+                                });
+                              },
+                              icon: Icon(
+                                ispwdvisible
+                                    ? Icons.visibility
+                                    : Icons.visibility_off,
+                              )),
+                          border: const OutlineInputBorder(
                               borderRadius: BorderRadius.zero),
-                          prefixIcon: Icon(Icons.password),
+                          prefixIcon: const Icon(Icons.password),
                         ),
                       ),
                       const SizedBox(height: 11),

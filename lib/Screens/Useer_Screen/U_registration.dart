@@ -212,6 +212,7 @@ class _U_registrationState extends State<U_registration> {
   final TextEditingController _pwdController = TextEditingController();
   final TextEditingController _retypePwdController = TextEditingController();
   final TextEditingController _pnoController = TextEditingController();
+  bool ispwdvisible = false;
 
   final FirebaseServices _firebaseServices = FirebaseServices();
   final _formKey = GlobalKey<FormState>();
@@ -337,11 +338,22 @@ class _U_registrationState extends State<U_registration> {
                         // Password Field
                         TextFormField(
                           controller: _pwdController,
-                          obscureText: true,
-                          decoration: const InputDecoration(
+                          obscureText: !ispwdvisible,
+                          decoration: InputDecoration(
                             labelText: "Password",
                             hintText: "Enter Your Password",
-                            border: OutlineInputBorder(
+                            suffixIcon: IconButton(
+                                onPressed: () {
+                                  setState(() {
+                                    ispwdvisible = !ispwdvisible;
+                                  });
+                                },
+                                icon: Icon(
+                                  ispwdvisible
+                                      ? Icons.visibility
+                                      : Icons.visibility_off,
+                                )),
+                            border: const OutlineInputBorder(
                                 borderRadius: BorderRadius.zero),
                           ),
                           validator: (value) {
@@ -358,11 +370,22 @@ class _U_registrationState extends State<U_registration> {
                         // Retype Password Field
                         TextFormField(
                           controller: _retypePwdController,
-                          obscureText: true,
-                          decoration: const InputDecoration(
+                          obscureText: !ispwdvisible,
+                          decoration: InputDecoration(
                             labelText: "Re-Type Password",
                             hintText: "Enter Your Password Again",
-                            border: OutlineInputBorder(
+                            suffixIcon: IconButton(
+                                onPressed: () {
+                                  setState(() {
+                                    ispwdvisible = !ispwdvisible;
+                                  });
+                                },
+                                icon: Icon(
+                                  ispwdvisible
+                                      ? Icons.visibility
+                                      : Icons.visibility_off,
+                                )),
+                            border: const OutlineInputBorder(
                                 borderRadius: BorderRadius.zero),
                           ),
                           validator: (value) {
