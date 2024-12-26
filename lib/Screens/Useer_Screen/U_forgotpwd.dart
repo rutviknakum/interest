@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:interest/Screens/Admin_Screen/A_verification_pwd.dart';
+import 'package:interest/Screens/Useer_Screen/U_verification_pwd.dart';
 import 'package:interest/firebase_services/auth_service.dart';
 
 class U_forgotpwd extends StatefulWidget {
@@ -36,7 +36,7 @@ class _U_forgotpwdState extends State<U_forgotpwd> {
         Navigator.push(
             context,
             MaterialPageRoute(
-                builder: (context) => A_verificaion_pwd(
+                builder: (context) => U_verificaion_pwd(
                       verificationid: verificationid,
                     )));
       },
