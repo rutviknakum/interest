@@ -193,24 +193,24 @@ class _U_registrationState extends State<U_registration> {
       ),
     );
   }
-}
+}*/
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:interest/Screens/Useer_Screen/U_Loginscreen.dart';
+import 'package:interest/Screens/Admin_Screen/A_mainscreen.dart';
 import 'package:interest/firebase_services/auth_service.dart';
 
-class U_registration extends StatefulWidget {
-  const U_registration({super.key});
+class A_addmember extends StatefulWidget {
+  const A_addmember({super.key});
 
   @override
-  State<U_registration> createState() => _U_registrationState();
+  State<A_addmember> createState() => _A_addmemberState();
 }
 
-class _U_registrationState extends State<U_registration> {
-  final TextEditingController _nameController = TextEditingController();
+class _A_addmemberState extends State<A_addmember> {
+  final TextEditingController _fnameController = TextEditingController();
+  final TextEditingController _lnameController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _pwdController = TextEditingController();
-  final TextEditingController _retypePwdController = TextEditingController();
   final TextEditingController _pnoController = TextEditingController();
   bool ispwdvisible = false;
 
@@ -219,27 +219,24 @@ class _U_registrationState extends State<U_registration> {
 
   void _registerUser() async {
     if (_formKey.currentState!.validate()) {
-      String name = _nameController.text.trim();
+      String fname = _fnameController.text.trim();
+      String lname = _lnameController.text.trim();
       String email = _emailController.text.trim();
       String phoneno = _pnoController.text.trim();
       String password = _pwdController.text.trim();
 
-      User? user =
-          await _firebaseServices.Usigninmethod(name, email, phoneno, password);
+      User? user = await _firebaseServices.Usigninmethod(
+          fname, lname, email, phoneno, password);
       if (user != null) {
         ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(content: Text("Registration successful!")));
-        Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(
-              builder: (context) =>
-                  U_Loginscreen()), // Replace HomePage with your destination widget
-        );
+            const SnackBar(content: Text("Add member successful!")));
+        // Replace HomePage with your destination widget
+        Navigator.push(
+            context, MaterialPageRoute(builder: (context) => A_mainscreen()));
         // Navigate to another screen or clear form fields
       } else {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-              content: Text("Registration failed. Please try again.")),
+          const SnackBar(content: Text("failed. Please try again.")),
         );
       }
     }
@@ -279,10 +276,20 @@ class _U_registrationState extends State<U_registration> {
                         const SizedBox(height: 15),
                         // Name Field
                         TextFormField(
-                          controller: _nameController,
+                          controller: _fnameController,
+                          decoration: InputDecoration(
+                              labelText: "First Name",
+                              hintText: "Enter Your First Name",
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.zero,
+                              )),
+                        ),
+                        const SizedBox(height: 15),
+                        TextFormField(
+                          controller: _lnameController,
                           decoration: const InputDecoration(
-                            labelText: "Name",
-                            hintText: "Enter Your Name",
+                            labelText: "Last Name",
+                            hintText: "Enter Your Last Name",
                             border: OutlineInputBorder(
                                 borderRadius: BorderRadius.zero),
                           ),
@@ -368,7 +375,7 @@ class _U_registrationState extends State<U_registration> {
                         ),
                         const SizedBox(height: 15),
                         // Retype Password Field
-                        TextFormField(
+                        /*TextFormField(
                           controller: _retypePwdController,
                           obscureText: !ispwdvisible,
                           decoration: InputDecoration(
@@ -397,7 +404,7 @@ class _U_registrationState extends State<U_registration> {
                             }
                             return null;
                           },
-                        ),
+                        ),*/
                         const SizedBox(height: 20),
                         // Register Button
                         SizedBox(
@@ -419,7 +426,7 @@ class _U_registrationState extends State<U_registration> {
                                     size: 25, color: Colors.white),
                                 SizedBox(width: 8),
                                 Text(
-                                  "Sign Up",
+                                  "Add member",
                                   style: TextStyle(
                                       fontSize: 20,
                                       fontWeight: FontWeight.bold),
@@ -439,4 +446,4 @@ class _U_registrationState extends State<U_registration> {
       ),
     );
   }
-}*/
+}

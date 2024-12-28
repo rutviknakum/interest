@@ -70,19 +70,6 @@ class _A_profilescreenState extends State<A_profilescreen> {
             const SizedBox(height: 20),
 
             // Logout button
-            ElevatedButton(
-              onPressed: () async {
-                await _auth.signOut(); // Log out the user
-                // Optionally, navigate to the login screen after logout
-              },
-              child: const Text(
-                'Logout',
-                style: TextStyle(fontSize: 16),
-              ),
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.red, // Red color for logout button
-              ),
-            ),
           ],
         ),
       ),

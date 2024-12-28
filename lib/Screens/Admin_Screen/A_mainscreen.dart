@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:interest/Screens/Admin_Screen/A_Loginscreen.dart';
+import 'package:interest/Screens/Admin_Screen/A_addmember.dart';
 import 'package:interest/Screens/Admin_Screen/A_profilescreen.dart';
 
 class A_mainscreen extends StatefulWidget {
@@ -103,7 +104,10 @@ class _A_mainscreenState extends State<A_mainscreen> {
             Padding(
               padding: const EdgeInsets.only(left: 200.0, bottom: 50),
               child: IconButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => A_addmember()));
+                  },
                   icon: Icon(
                     Icons.add,
                     size: 60,

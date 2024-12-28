@@ -2,7 +2,6 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:interest/Screens/Useer_Screen/U_forgotpwd.dart';
 import 'package:interest/Screens/Useer_Screen/U_mainscreen.dart';
-import 'package:interest/Screens/Useer_Screen/U_registration.dart';
 import 'package:interest/firebase_services/auth_service.dart';
 
 class U_Loginscreen extends StatefulWidget {
@@ -150,8 +149,8 @@ class _U_LoginscreenState extends State<U_Loginscreen>
                                   controller: _emailController,
                                   keyboardType: TextInputType.emailAddress,
                                   decoration: const InputDecoration(
-                                    labelText: "Username",
-                                    hintText: 'Enter Your Username...!',
+                                    labelText: "Email",
+                                    hintText: 'Enter Your Email...!',
                                     border: OutlineInputBorder(),
                                   ),
                                 ),
@@ -175,6 +174,35 @@ class _U_LoginscreenState extends State<U_Loginscreen>
                                         )),
                                     border: const OutlineInputBorder(),
                                   ),
+                                ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  children: [
+                                    const SizedBox(
+                                      width: 10,
+                                    ),
+                                    TextButton(
+                                        onPressed: () {
+                                          Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      U_forgotpwd()));
+                                        },
+                                        style: TextButton.styleFrom(
+                                          // foregroundColor: Colors.black,
+                                          shape: const RoundedRectangleBorder(
+                                            borderRadius: BorderRadius.zero,
+                                          ),
+                                        ),
+                                        child: const Text(
+                                          "Forgot Password?!",
+                                          style: TextStyle(
+                                              // color: Colors.black,
+                                              fontSize: 15,
+                                              fontWeight: FontWeight.bold),
+                                        )),
+                                  ],
                                 ),
                                 const SizedBox(height: 20),
                                 SizedBox(
@@ -212,55 +240,6 @@ class _U_LoginscreenState extends State<U_Loginscreen>
                                 const SizedBox(
                                   height: 5,
                                 ),
-                                Row(
-                                  children: [
-                                    TextButton(
-                                        onPressed: () {
-                                          Navigator.push(
-                                              context,
-                                              MaterialPageRoute(
-                                                  builder: (context) =>
-                                                      U_forgotpwd()));
-                                        },
-                                        style: TextButton.styleFrom(
-                                          // foregroundColor: Colors.black,
-                                          shape: const RoundedRectangleBorder(
-                                            borderRadius: BorderRadius.zero,
-                                          ),
-                                        ),
-                                        child: const Text(
-                                          "Forgot Password.!?",
-                                          style: TextStyle(
-                                              // color: Colors.black,
-                                              fontSize: 12,
-                                              fontWeight: FontWeight.bold),
-                                        )),
-                                    const SizedBox(
-                                      width: 5,
-                                    ),
-                                    TextButton(
-                                        onPressed: () {
-                                          Navigator.push(
-                                              context,
-                                              MaterialPageRoute(
-                                                  builder: (context) =>
-                                                      U_registration()));
-                                        },
-                                        style: TextButton.styleFrom(
-                                          // foregroundColor: Colors.black,
-                                          shape: const RoundedRectangleBorder(
-                                            borderRadius: BorderRadius.zero,
-                                          ),
-                                        ),
-                                        child: const Text(
-                                          "New Registration..!?",
-                                          style: TextStyle(
-                                              //   color: Colors.black,
-                                              fontSize: 12,
-                                              fontWeight: FontWeight.bold),
-                                        )),
-                                  ],
-                                )
                               ],
                             ),
                           ),

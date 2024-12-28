@@ -1,8 +1,9 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class FirebaseServices {
   final FirebaseAuth _auth = FirebaseAuth.instance;
-
+  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   Future<User?> loginmethod(String email, String password) async {
     try {
       UserCredential credential = await _auth.signInWithEmailAndPassword(
@@ -12,8 +13,8 @@ class FirebaseServices {
     return null;
   }
 
-  Future<User?> Usigninmethod(
-      String name, String email, String phoneno, String password) async {
+  Future<User?> Usigninmethod(String firstname, String Lastname, String email,
+      String phoneno, String password) async {
     try {
       UserCredential credential = await _auth.createUserWithEmailAndPassword(
           email: email, password: password);
@@ -85,5 +86,18 @@ class FirebaseServices {
       await _auth.signOut();
       // ignore: empty_catches
     } catch (e) {}
+  }
+
+  Future<Map<String, dynamic>?> fetchUserDetails() async {
+    try {
+      final user = _auth.currentUser;
+      if (user != null) {
+        final doc = await _firestore.collection('users').doc(user.uid).get();
+        return doc.data();
+      }
+    } catch (e) {
+      print("Error fetching user details: $e");
+    }
+    return null;
   }
 }
