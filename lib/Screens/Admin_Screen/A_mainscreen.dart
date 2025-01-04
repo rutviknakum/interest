@@ -59,7 +59,7 @@ class _A_mainscreenState extends State<A_mainscreen> {
               title: Text("Log Out"),
               onTap: () async {
                 await _auth.signOut();
-                Navigator.push(context,
+                Navigator.pushReplacement(context,
                     MaterialPageRoute(builder: (context) => A_Loginscreen()));
               },
             ),
