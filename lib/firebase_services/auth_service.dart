@@ -183,9 +183,9 @@ class FirebaseServices {
 
   // Pick Profile Picture
   Future<File?> pickProfilePic() async {
-    final ImagePicker _picker = ImagePicker();
+    final ImagePicker picker = ImagePicker();
     final XFile? pickedFile =
-        await _picker.pickImage(source: ImageSource.gallery);
+        await picker.pickImage(source: ImageSource.gallery);
     if (pickedFile != null) {
       return File(pickedFile.path);
     }

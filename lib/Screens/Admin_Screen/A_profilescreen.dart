@@ -111,9 +111,9 @@ class _A_profilescreenState extends State<A_profilescreen> {
 
   String? _email, _firstName, _lastName, _phoneNumber, _profilePicUrl;
   bool _isEditing = false;
-  TextEditingController _firstNameController = TextEditingController();
-  TextEditingController _lastNameController = TextEditingController();
-  TextEditingController _phoneNumberController = TextEditingController();
+  final TextEditingController _firstNameController = TextEditingController();
+  final TextEditingController _lastNameController = TextEditingController();
+  final TextEditingController _phoneNumberController = TextEditingController();
   File? _profilePic;
 
   @override
@@ -156,8 +156,8 @@ class _A_profilescreenState extends State<A_profilescreen> {
 
   // Pick profile picture from gallery or camera
   Future<void> _pickProfilePic() async {
-    final ImagePicker _picker = ImagePicker();
-    final XFile? pickedFile = await _picker.pickImage(
+    final ImagePicker picker = ImagePicker();
+    final XFile? pickedFile = await picker.pickImage(
         source: ImageSource
             .gallery); // You can switch to ImageSource.camera for camera
     if (pickedFile != null) {
