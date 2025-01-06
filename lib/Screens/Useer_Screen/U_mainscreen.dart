@@ -1,4 +1,4 @@
-import 'package:firebase_auth/firebase_auth.dart';
+/*import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:interest/Screens/Admin_Screen/A_profilescreen.dart';
 import 'package:interest/Screens/Useer_Screen/U_Loginscreen.dart';
@@ -127,3 +127,4 @@ class _U_mainscreenState extends State<U_mainscreen> {
     );
   }
 }
+*/

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:interest/Screens/Admin_Screen/A_verification_pwd.dart';
 import 'package:interest/firebase_services/auth_service.dart';
 
 class ForgotPwdScreen extends StatefulWidget {
@@ -14,39 +13,87 @@ class _ForgotPwdScreenState extends State<ForgotPwdScreen> {
   final TextEditingController _phoneController = TextEditingController();
   final FirebaseServices _auth = FirebaseServices();
   String _message = "";
+  bool _isLoading = false;
 
   // Send reset email
+  /*void _sendResetEmail() async {
+    if (_emailController.text.isEmpty) {
+      setState(() {
+        _message = "Please enter your email.";
+      });
+      return;
+    }
+
+    setState(() {
+      _isLoading = true;
+    });
+
+    try {
+      String? result = await _auth.resetPasswordByEmail(_emailController.text);
+      setState(() {
+        _message = result ?? "Error occurred.";
+        _isLoading = false;
+      });
+    } catch (e) {
+      setState(() {
+        _message = "Error: ${e.toString()}";
+        _isLoading = false;
+      });
+    }
+  }
+*/
   void _sendResetEmail() async {
-    String? result = await _auth.resetpwd(_emailController.text);
+    String? result = await _auth.resetPasswordByEmail(_emailController.text);
     setState(() {
       _message = result ?? "Error occurred.";
     });
   }
-
   // Send reset phone
-  void _sendResetPhone() async {
-    await _auth.sendPhoneVerification(
-      _phoneController.text,
-      (message) {
-        setState(() {
-          _message = message;
-        });
-      },
-      (verificationid, resendToken) {
-        Navigator.push(
+  /*void _sendResetPhone() async {
+    if (_phoneController.text.isEmpty) {
+      setState(() {
+        _message = "Please enter your phone number.";
+      });
+      return;
+    }
+
+    setState(() {
+      _isLoading = true;
+    });
+
+    try {
+      await _auth.sendPhoneVerification(
+        _phoneController.text,
+        (message) {
+          setState(() {
+            _message = message;
+            _isLoading = false;
+          });
+        },
+        (verificationId, resendToken) {
+          Navigator.push(
             context,
             MaterialPageRoute(
-                builder: (context) => A_verificaion_pwd(
-                      verificationid: verificationid,
-                    )));
-      },
-      (errorMessage) {
-        setState(() {
-          _message = errorMessage;
-        });
-      },
-    );
-  }
+              builder: (context) => A_verificaion_pwd(
+                verificationId: verificationId,
+              ),
+            ),
+          );
+        },
+        (errorMessage) {
+          setState(() {
+            _message = errorMessage;
+            _isLoading = false;
+          });
+        },
+      );
+    } catch (e) {
+      setState(() {
+        _message = "Error: ${e.toString()}";
+        _isLoading = false;
+      });
+    }
+  }*/
 
   @override
   Widget build(BuildContext context) {
@@ -85,14 +132,17 @@ class _ForgotPwdScreenState extends State<ForgotPwdScreen> {
                           labelText: "Email",
                           hintText: "Enter Your Email...!",
                           border: OutlineInputBorder(
-                              borderRadius: BorderRadius.zero),
+                            borderRadius: BorderRadius.zero,
+                          ),
                           prefixIcon: Icon(Icons.email),
                         ),
                       ),
                       const SizedBox(height: 20),
-                      const Text("Or",
-                          style: TextStyle(
-                              fontSize: 20, fontWeight: FontWeight.bold)),
+                      const Text(
+                        "Or",
+                        style: TextStyle(
+                            fontSize: 20, fontWeight: FontWeight.bold),
+                      ),
                       const SizedBox(height: 20),
                       TextField(
                         controller: _phoneController,
@@ -100,7 +150,8 @@ class _ForgotPwdScreenState extends State<ForgotPwdScreen> {
                           labelText: "Mobile Number",
                           hintText: "Enter Your Mobile Number...!",
                           border: OutlineInputBorder(
-                              borderRadius: BorderRadius.zero),
+                            borderRadius: BorderRadius.zero,
+                          ),
                           prefixIcon: Icon(Icons.phone),
                         ),
                       ),
@@ -109,8 +160,11 @@ class _ForgotPwdScreenState extends State<ForgotPwdScreen> {
                         onPressed: () {
                           if (_emailController.text.isNotEmpty) {
                             _sendResetEmail();
-                          } else if (_phoneController.text.isNotEmpty) {
-                            _sendResetPhone();
+                          } else {
+                            setState(() {
+                              _message =
+                                  "Please enter either email or phone number.";
+                            });
                           }
                         },
                         style: TextButton.styleFrom(
@@ -120,7 +174,12 @@ class _ForgotPwdScreenState extends State<ForgotPwdScreen> {
                             borderRadius: BorderRadius.zero,
                           ),
                         ),
-                        child: const Text("Send", style: TextStyle(fontSize: 20)),
+                        child: _isLoading
+                            ? const CircularProgressIndicator(
+                                color: Colors.white,
+                              )
+                            : const Text("Send",
+                                style: TextStyle(fontSize: 20)),
                       ),
                       const SizedBox(height: 20),
                       Text(_message), // Display any messages
