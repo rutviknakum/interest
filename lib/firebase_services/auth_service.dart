@@ -30,7 +30,7 @@ class FirebaseServices {
     required String email,
     required String phoneNo,
     required String password,
-    required bool isAdmin,
+    //required bool isAdmin,
     File? profilePic,
   }) async {
     try {

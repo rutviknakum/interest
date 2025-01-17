@@ -467,7 +467,7 @@ class _A_addmemberState extends State<A_addmember> {
   final TextEditingController _pwdController = TextEditingController();
   final TextEditingController _pnoController = TextEditingController();
   bool ispwdvisible = false;
-  bool _isAdmin = false; // Admin flag to be set by the current admin
+  //bool _isAdmin = false; // Admin flag to be set by the current admin
 
   final FirebaseServices _firebaseServices = FirebaseServices();
   final _formKey = GlobalKey<FormState>();
@@ -487,7 +487,7 @@ class _A_addmemberState extends State<A_addmember> {
         email: email,
         phoneNo: phoneno,
         password: password,
-        isAdmin: _isAdmin, // Pass the admin status
+        //isAdmin: _isAdmin, // Pass the admin status
       );
 
       if (user != null) {
@@ -647,7 +647,7 @@ class _A_addmemberState extends State<A_addmember> {
                         ),
                         const SizedBox(height: 15),
                         // Admin Status Switch
-                        SwitchListTile(
+                        /*SwitchListTile(
                           title: const Text("Set as Sub-Admin"),
                           value: _isAdmin,
                           onChanged: (value) {
@@ -656,7 +656,7 @@ class _A_addmemberState extends State<A_addmember> {
                             });
                           },
                           secondary: const Icon(Icons.admin_panel_settings),
-                        ),
+                        ),*/
                         const SizedBox(height: 15),
                         // Register Button
                         SizedBox(
