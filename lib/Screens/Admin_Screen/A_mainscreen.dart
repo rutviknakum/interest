@@ -14,106 +14,178 @@ class A_mainscreen extends StatefulWidget {
 class _A_mainscreenState extends State<A_mainscreen> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   final FirebaseAuth _auth = FirebaseAuth.instance;
+  bool _isdarktheme = false;
+
+  void _toggletheme(bool value) {
+    setState(() {
+      _isdarktheme = value;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      key: _scaffoldKey,
-      endDrawer: Drawer(
-        child: ListView(
-          padding: EdgeInsets.zero,
-          children: [
-            DrawerHeader(
-                decoration: BoxDecoration(),
-                child: Column(
+    return MaterialApp(
+      theme: ThemeData(
+        brightness: _isdarktheme ? Brightness.dark : Brightness.light,
+        primarySwatch: Colors.blue,
+      ),
+      home: Scaffold(
+        key: _scaffoldKey,
+        endDrawer: Drawer(
+          child: ListView(
+            padding: EdgeInsets.zero,
+            children: [
+              DrawerHeader(
+                  decoration: BoxDecoration(),
+                  child: Column(
+                    children: [
+                      Icon(
+                        Icons.account_circle,
+                        size: 50,
+                        color: Colors.black,
+                      ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Text(
+                        "Welcome,Admin",
+                        style: TextStyle(
+                            fontSize: 25, fontWeight: FontWeight.bold),
+                      ),
+                    ],
+                  )),
+              ListTile(
+                leading: Icon(Icons.account_box_rounded),
+                title: Text("Profile"),
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => A_profilescreen()));
+                },
+              ),
+              ListTile(
+                leading: Icon(Icons.settings),
+                title: Text("Settings"),
+                onTap: () {},
+              ),
+              ListTile(
+                leading: Icon(Icons.dark_mode),
+                title: Text("dark mode"),
+                trailing: Switch(value: _isdarktheme, onChanged: _toggletheme),
+                onTap: () {},
+              ),
+              ListTile(
+                leading: Icon(Icons.logout),
+                title: Text("Log Out"),
+                onTap: () async {
+                  await _auth.signOut();
+                  Navigator.pushReplacement(context,
+                      MaterialPageRoute(builder: (context) => A_Loginscreen()));
+                },
+              ),
+            ],
+          ),
+        ),
+        body: Container(
+          height: double.infinity,
+          width: double.infinity,
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+              colors: [Color(0xffa1c4fd), Color(0xffc2e9fb)],
+            ),
+          ),
+          child: Column(
+            children: [
+              // Add space at the top
+              const SizedBox(height: 50), // Adjust height as needed
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                child: Row(
+                  //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    Icon(
-                      Icons.account_circle,
-                      size: 50,
-                      color: Colors.black,
-                    ),
-                    SizedBox(
-                      height: 10,
-                    ),
-                    Text(
-                      "Welcome,Admin",
+                    // "Welcome Admin" Text
+                    const Text(
+                      "Welcome Admin...!",
                       style:
                           TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
                     ),
+                    Spacer(),
+                    // Profile Icon
+                    IconButton(
+                      onPressed: () {
+                        // Add navigation or functionality for profile here
+                        _scaffoldKey.currentState?.openEndDrawer();
+                      },
+                      icon: const Icon(Icons.account_circle, size: 40),
+                    ),
                   ],
-                )),
-            ListTile(
-              leading: Icon(Icons.account_box_rounded),
-              title: Text("Profile"),
-              onTap: () {
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => A_profilescreen()));
-              },
-            ),
-            ListTile(
-              leading: Icon(Icons.settings),
-              title: Text("Settings"),
-              onTap: () {},
-            ),
-            ListTile(
-              leading: Icon(Icons.logout),
-              title: Text("Log Out"),
-              onTap: () async {
-                await _auth.signOut();
-                Navigator.pushReplacement(context,
-                    MaterialPageRoute(builder: (context) => A_Loginscreen()));
-              },
-            ),
-          ],
-        ),
-      ),
-      body: Container(
-        height: double.infinity,
-        width: double.infinity,
-        decoration: const BoxDecoration(
-          gradient: LinearGradient(
-            colors: [Color(0xffa1c4fd), Color(0xffc2e9fb)],
+                ),
+              ),
+              const Spacer(),
+              Padding(
+                padding: const EdgeInsets.only(left: 250.0, bottom: 50),
+                child: Container(
+                  width: 80, // Set the width of the square
+                  height: 80, // Set the height of the square
+                  decoration: BoxDecoration(
+                    // color: Colors.grey.shade200, // Set background color
+                    shape: BoxShape
+                        .rectangle, // Ensure it's a rectangle (square here)
+                    // Optional: Rounded corners
+                    // Optional: Border styling
+                  ),
+                  child: IconButton(
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => A_addmember()));
+                    },
+                    icon: Icon(
+                      Icons.add,
+                      size: 80, // Adjust icon size as needed
+                      color: Colors.black, // Adjust icon color
+                    ),
+                  ),
+                ),
+              ),
+// Pushes content below this to the bottom
+            ],
           ),
         ),
-        child: Column(
-          children: [
-            // Add space at the top
-            const SizedBox(height: 50), // Adjust height as needed
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16.0),
-              child: Row(
-                //mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  // "Welcome Admin" Text
-                  const Text(
-                    "Welcome Admin...!",
-                    style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
-                  ),
-                  Spacer(),
-                  // Profile Icon
-                  IconButton(
-                    onPressed: () {
-                      // Add navigation or functionality for profile here
-                      _scaffoldKey.currentState?.openEndDrawer();
-                    },
-                    icon: const Icon(Icons.account_circle, size: 40),
-                  ),
-                ],
+        //bottom mate na 3 button
+        bottomNavigationBar: BottomAppBar(
+          color: Colors.black,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              IconButton(
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => A_mainscreen()));
+                },
+                icon: Icon(Icons.home),
+                iconSize: 30,
+                color: Colors.white,
               ),
-            ),
-            const Spacer(),
-            Padding(
-              padding: const EdgeInsets.only(left: 200.0, bottom: 50),
-              child: IconButton(
-                  onPressed: () {
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => A_addmember()));
-                  },
-                  icon: Icon(
-                    Icons.add,
-                    size: 60,
-                  )),
-            ) // Pushes content below this to the bottom
-          ],
+              IconButton(
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => A_addmember()));
+                },
+                icon: Icon(Icons.card_membership),
+                iconSize: 30,
+                color: Colors.white,
+              ),
+              IconButton(
+                onPressed: () {},
+                icon: Icon(Icons.home),
+                iconSize: 30,
+                color: Colors.white,
+              )
+            ],
+          ),
         ),
       ),
     );
