@@ -1,4 +1,3 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:interest/Screens/Admin_Screen/A_Loginscreen.dart';
 import 'package:interest/Screens/Admin_Screen/A_addmember.dart';
@@ -13,7 +12,7 @@ class A_mainscreen extends StatefulWidget {
 
 class _A_mainscreenState extends State<A_mainscreen> {
   final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
-  final FirebaseAuth _auth = FirebaseAuth.instance;
+
   bool _isdarktheme = false;
 
   void _toggletheme(bool value) {
@@ -79,7 +78,6 @@ class _A_mainscreenState extends State<A_mainscreen> {
                 leading: Icon(Icons.logout),
                 title: Text("Log Out"),
                 onTap: () async {
-                  await _auth.signOut();
                   Navigator.pushReplacement(context,
                       MaterialPageRoute(builder: (context) => A_Loginscreen()));
                 },

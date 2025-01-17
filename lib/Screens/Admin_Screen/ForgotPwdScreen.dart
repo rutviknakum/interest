@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:interest/firebase_services/auth_service.dart';
 
 class ForgotPwdScreen extends StatefulWidget {
   const ForgotPwdScreen({super.key});
@@ -11,89 +10,8 @@ class ForgotPwdScreen extends StatefulWidget {
 class _ForgotPwdScreenState extends State<ForgotPwdScreen> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _phoneController = TextEditingController();
-  final FirebaseServices _auth = FirebaseServices();
   String _message = "";
   final bool _isLoading = false;
-
-  // Send reset email
-  /*void _sendResetEmail() async {
-    if (_emailController.text.isEmpty) {
-      setState(() {
-        _message = "Please enter your email.";
-      });
-      return;
-    }
-
-    setState(() {
-      _isLoading = true;
-    });
-
-    try {
-      String? result = await _auth.resetPasswordByEmail(_emailController.text);
-      setState(() {
-        _message = result ?? "Error occurred.";
-        _isLoading = false;
-      });
-    } catch (e) {
-      setState(() {
-        _message = "Error: ${e.toString()}";
-        _isLoading = false;
-      });
-    }
-  }
-*/
-  void _sendResetEmail() async {
-    String? result = await _auth.resetPasswordByEmail(_emailController.text);
-    setState(() {
-      _message = result;
-    });
-  }
-  // Send reset phone
-  /*void _sendResetPhone() async {
-    if (_phoneController.text.isEmpty) {
-      setState(() {
-        _message = "Please enter your phone number.";
-      });
-      return;
-    }
-
-    setState(() {
-      _isLoading = true;
-    });
-
-    try {
-      await _auth.sendPhoneVerification(
-        _phoneController.text,
-        (message) {
-          setState(() {
-            _message = message;
-            _isLoading = false;
-          });
-        },
-        (verificationId, resendToken) {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => A_verificaion_pwd(
-                verificationId: verificationId,
-              ),
-            ),
-          );
-        },
-        (errorMessage) {
-          setState(() {
-            _message = errorMessage;
-            _isLoading = false;
-          });
-        },
-      );
-    } catch (e) {
-      setState(() {
-        _message = "Error: ${e.toString()}";
-        _isLoading = false;
-      });
-    }
-  }*/
 
   @override
   Widget build(BuildContext context) {
@@ -159,7 +77,6 @@ class _ForgotPwdScreenState extends State<ForgotPwdScreen> {
                       TextButton(
                         onPressed: () {
                           if (_emailController.text.isNotEmpty) {
-                            _sendResetEmail();
                           } else {
                             setState(() {
                               _message =
