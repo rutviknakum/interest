@@ -111,9 +111,9 @@ class _A_profilescreenState extends State<A_profilescreen> {
 
   String? _email, _firstName, _lastName, _phoneNumber, _profilePicUrl;
   bool _isEditing = false;
-  TextEditingController _firstNameController = TextEditingController();
-  TextEditingController _lastNameController = TextEditingController();
-  TextEditingController _phoneNumberController = TextEditingController();
+  final TextEditingController _firstNameController = TextEditingController();
+  final TextEditingController _lastNameController = TextEditingController();
+  final TextEditingController _phoneNumberController = TextEditingController();
   File? _profilePic;
 
   @override
@@ -156,8 +156,8 @@ class _A_profilescreenState extends State<A_profilescreen> {
 
   // Pick profile picture from gallery or camera
   Future<void> _pickProfilePic() async {
-    final ImagePicker _picker = ImagePicker();
-    final XFile? pickedFile = await _picker.pickImage(
+    final ImagePicker picker = ImagePicker();
+    final XFile? pickedFile = await picker.pickImage(
         source: ImageSource
             .gallery); // You can switch to ImageSource.camera for camera
     if (pickedFile != null) {
@@ -214,7 +214,7 @@ class _A_profilescreenState extends State<A_profilescreen> {
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: Column(
+        child: ListView(
           children: [
             // Profile Picture
             GestureDetector(
@@ -236,30 +236,41 @@ class _A_profilescreenState extends State<A_profilescreen> {
             const SizedBox(height: 20),
 
             // Admin Email (not editable)
-            _email != null
-                ? Text(
-                    _email!,
-                    style: const TextStyle(fontSize: 18, color: Colors.grey),
-                  )
-                : const Text(
-                    "You are not an admin.",
-                    style: TextStyle(fontSize: 18, color: Colors.red),
-                  ),
-            const SizedBox(height: 20),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 10.0),
+              child: _email != null
+                  ? Text(
+                      _email!,
+                      style: const TextStyle(fontSize: 18, color: Colors.grey),
+                    )
+                  : const Text(
+                      "You are not an admin.",
+                      style: TextStyle(fontSize: 18, color: Colors.red),
+                    ),
+            ),
 
             // Editable Fields (only in editing mode)
             if (_isEditing) ...[
-              TextField(
-                controller: _firstNameController,
-                decoration: const InputDecoration(labelText: 'First Name'),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 8.0),
+                child: TextField(
+                  controller: _firstNameController,
+                  decoration: const InputDecoration(labelText: 'First Name'),
+                ),
               ),
-              TextField(
-                controller: _lastNameController,
-                decoration: const InputDecoration(labelText: 'Last Name'),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 8.0),
+                child: TextField(
+                  controller: _lastNameController,
+                  decoration: const InputDecoration(labelText: 'Last Name'),
+                ),
               ),
-              TextField(
-                controller: _phoneNumberController,
-                decoration: const InputDecoration(labelText: 'Phone Number'),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 8.0),
+                child: TextField(
+                  controller: _phoneNumberController,
+                  decoration: const InputDecoration(labelText: 'Phone Number'),
+                ),
               ),
               const SizedBox(height: 20),
               ElevatedButton(
@@ -268,9 +279,36 @@ class _A_profilescreenState extends State<A_profilescreen> {
               ),
             ] else ...[
               // Display name and phone when not editing
-              Text("First Name: $_firstName"),
-              Text("Last Name: $_lastName"),
-              Text("Phone Number: $_phoneNumber"),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 8.0),
+                child: Row(
+                  children: [
+                    const Text("First Name: ", style: TextStyle(fontSize: 18)),
+                    Text(_firstName ?? '',
+                        style: const TextStyle(fontSize: 18)),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 8.0),
+                child: Row(
+                  children: [
+                    const Text("Last Name: ", style: TextStyle(fontSize: 18)),
+                    Text(_lastName ?? '', style: const TextStyle(fontSize: 18)),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 8.0),
+                child: Row(
+                  children: [
+                    const Text("Phone Number: ",
+                        style: TextStyle(fontSize: 18)),
+                    Text(_phoneNumber ?? '',
+                        style: const TextStyle(fontSize: 18)),
+                  ],
+                ),
+              ),
               const SizedBox(height: 20),
               ElevatedButton(
                 onPressed: _toggleEdit,
@@ -279,21 +317,6 @@ class _A_profilescreenState extends State<A_profilescreen> {
             ],
 
             const SizedBox(height: 20),
-
-            // Logout button
-            ElevatedButton(
-              onPressed: () async {
-                await _auth.signOut();
-                // Optionally, navigate to the login screen after logout
-              },
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.red, // Red color for logout button
-              ),
-              child: const Text(
-                'Logout',
-                style: TextStyle(fontSize: 16),
-              ),
-            ),
           ],
         ),
       ),

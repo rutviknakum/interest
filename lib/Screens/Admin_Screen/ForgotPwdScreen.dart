@@ -13,7 +13,7 @@ class _ForgotPwdScreenState extends State<ForgotPwdScreen> {
   final TextEditingController _phoneController = TextEditingController();
   final FirebaseServices _auth = FirebaseServices();
   String _message = "";
-  bool _isLoading = false;
+  final bool _isLoading = false;
 
   // Send reset email
   /*void _sendResetEmail() async {
@@ -45,7 +45,7 @@ class _ForgotPwdScreenState extends State<ForgotPwdScreen> {
   void _sendResetEmail() async {
     String? result = await _auth.resetPasswordByEmail(_emailController.text);
     setState(() {
-      _message = result ?? "Error occurred.";
+      _message = result;
     });
   }
   // Send reset phone
