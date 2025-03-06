@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:intrest/Screens/MemberScreen.dart';
 
 class A_addmember extends StatefulWidget {
   const A_addmember({super.key});
@@ -226,34 +225,34 @@ class _A_addmemberState extends State<A_addmember> {
 
                         const SizedBox(height: 15),
                         // View Members Button
-                        SizedBox(
-                          width: double.infinity,
-                          height: 50,
-                          child: TextButton(
-                            onPressed: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder:
-                                      (context) =>
-                                          MemberScreen(members: _members),
-                                ),
-                              );
-                            },
-                            style: TextButton.styleFrom(
-                              foregroundColor: Colors.white,
-                              backgroundColor: Colors.blue,
-                              shape: const RoundedRectangleBorder(),
-                            ),
-                            child: const Text(
-                              "View Members",
-                              style: TextStyle(
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ),
-                        ),
+                        // SizedBox(
+                        //   width: double.infinity,
+                        //   height: 50,
+                        //   child: TextButton(
+                        //     onPressed: () {
+                        //       Navigator.push(
+                        //         context,
+                        //         MaterialPageRoute(
+                        //           builder:
+                        //               (context) =>
+                        //                   MemberScreen(members: _members),
+                        //         ),
+                        //       );
+                        //     },
+                        //     style: TextButton.styleFrom(
+                        //       foregroundColor: Colors.white,
+                        //       backgroundColor: Colors.blue,
+                        //       shape: const RoundedRectangleBorder(),
+                        //     ),
+                        //     child: const Text(
+                        //       "View Members",
+                        //       style: TextStyle(
+                        //         fontSize: 18,
+                        //         fontWeight: FontWeight.bold,
+                        //       ),
+                        //     ),
+                        //   ),
+                        // ),
                       ],
                     ),
                   ),

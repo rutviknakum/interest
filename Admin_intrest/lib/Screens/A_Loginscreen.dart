@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:intrest/Screens/ForgotPwdScreen.dart';
 
 class A_Loginscreen extends StatefulWidget {
@@ -27,7 +28,6 @@ class _A_LoginscreenState extends State<A_Loginscreen>
       duration: const Duration(seconds: 3),
     );
 
-    // Position of welcome text
     _welcometextpos = Tween<double>(begin: 0.5, end: -0.6).animate(
       CurvedAnimation(
         parent: _animation,
@@ -35,7 +35,6 @@ class _A_LoginscreenState extends State<A_Loginscreen>
       ),
     );
 
-    // Opacity
     _adminLoginScreenOpacity = Tween<double>(begin: 0.0, end: 1.0).animate(
       CurvedAnimation(
         parent: _animation,
@@ -57,7 +56,31 @@ class _A_LoginscreenState extends State<A_Loginscreen>
   @override
   void dispose() {
     _animation.dispose();
+    _emailController.dispose();
+    _pwdController.dispose();
     super.dispose();
+  }
+
+  Future<void> _adminLogin() async {
+    if (!_formKey.currentState!.validate()) return;
+
+    final email = _emailController.text.trim();
+    final password = _pwdController.text.trim();
+
+    try {
+      final response = await Supabase.instance.client.auth.signInWithPassword(
+        email: email,
+        password: password,
+      );
+
+      if (response.user != null) {
+        Navigator.pushReplacementNamed(context, '/admin_dashboard');
+      }
+    } catch (e) {
+      ScaffoldMessenger.of(
+        context,
+      ).showSnackBar(SnackBar(content: Text("Login failed: ${e.toString()}")));
+    }
   }
 
   @override
@@ -74,7 +97,6 @@ class _A_LoginscreenState extends State<A_Loginscreen>
               ),
             ),
           ),
-          // Animated "Welcome" Text
           AnimatedBuilder(
             animation: _welcometextpos,
             builder: (context, child) {
@@ -91,7 +113,7 @@ class _A_LoginscreenState extends State<A_Loginscreen>
               );
             },
           ),
-          // Login Screen (Initially Invisible)
+
           if (_ShowLoginScreen)
             AnimatedBuilder(
               animation: _adminLoginScreenOpacity,
@@ -101,144 +123,97 @@ class _A_LoginscreenState extends State<A_Loginscreen>
                   child: Align(
                     alignment: Alignment.center,
                     child: Padding(
-                      padding: const EdgeInsets.only(
-                        top: 95,
-                        left: 16,
-                        right: 16,
-                      ),
+                      padding: const EdgeInsets.all(15.0),
                       child: Material(
                         elevation: 8,
-                        borderRadius: BorderRadius.zero,
+                        borderRadius: BorderRadius.circular(10),
                         child: Padding(
                           padding: const EdgeInsets.all(24.0),
-                          child: SingleChildScrollView(
-                            child: Form(
-                              key: _formKey,
-                              child: Column(
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  Image.asset(
-                                    'assets/images/Logo.png',
-                                    height: 200,
-                                    width: 200,
+                          child: Form(
+                            key: _formKey,
+                            child: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                Image.asset(
+                                  'assets/images/Logo.png',
+                                  height: 150,
+                                  width: 150,
+                                ),
+                                const SizedBox(height: 16),
+                                TextFormField(
+                                  controller: _emailController,
+                                  keyboardType: TextInputType.emailAddress,
+                                  decoration: const InputDecoration(
+                                    labelText: "Email",
+                                    border: OutlineInputBorder(),
                                   ),
-                                  const SizedBox(height: 16),
-                                  TextFormField(
-                                    controller: _emailController,
-                                    keyboardType: TextInputType.emailAddress,
-                                    decoration: const InputDecoration(
-                                      labelText: "Email",
-                                      hintText: 'Enter Your Email...!',
-                                      border: OutlineInputBorder(),
-                                    ),
-                                    validator: (value) {
-                                      if (value == null || value.isEmpty) {
-                                        return "Please enter your email";
-                                      }
-                                      return null;
-                                    },
-                                  ),
-                                  const SizedBox(height: 20),
-                                  TextFormField(
-                                    controller: _pwdController,
-                                    obscureText: !ispwdvisible,
-                                    decoration: InputDecoration(
-                                      labelText: "Password",
-                                      hintText: 'Enter Your Password...!',
-                                      suffixIcon: IconButton(
-                                        onPressed: () {
-                                          setState(() {
-                                            ispwdvisible = !ispwdvisible;
-                                          });
-                                        },
-                                        icon: Icon(
-                                          ispwdvisible
-                                              ? Icons.visibility
-                                              : Icons.visibility_off,
-                                        ),
-                                      ),
-                                      border: const OutlineInputBorder(),
-                                    ),
-                                    validator: (value) {
-                                      if (value == null || value.isEmpty) {
-                                        return "Please enter your email";
-                                      }
-                                      return null;
-                                    },
-                                  ),
-                                  // Forgot Password Button
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.end,
-                                    children: [
-                                      const SizedBox(width: 10),
-                                      TextButton(
-                                        onPressed: () {
-                                          Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                              builder:
-                                                  (context) =>
-                                                      ForgotPwdScreen(),
-                                            ),
-                                          );
-                                          // Placeholder for Forgot Password
-                                        },
-                                        child: const Text(
-                                          "Forgot Password?!",
-                                          style: TextStyle(
-                                            fontSize: 15,
-                                            fontWeight: FontWeight.bold,
-                                          ),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                  const SizedBox(height: 10),
-                                  // Login Button
-                                  SizedBox(
-                                    width: 150,
-                                    height: 50,
-                                    child: TextButton(
+                                  validator:
+                                      (value) =>
+                                          value!.isEmpty
+                                              ? "Enter your email"
+                                              : null,
+                                ),
+                                const SizedBox(height: 20),
+                                TextFormField(
+                                  controller: _pwdController,
+                                  obscureText: !ispwdvisible,
+                                  decoration: InputDecoration(
+                                    labelText: "Password",
+                                    border: const OutlineInputBorder(),
+                                    suffixIcon: IconButton(
                                       onPressed: () {
-                                        // if (_formKey.currentState!.validate()) {
-                                        //   // Proceed with login and navigate to HomeScreen
-                                        //   Navigator.push(
-                                        //     context,
-                                        //     MaterialPageRoute(
-                                        //       builder:
-                                        //           (context) => A_mainscreen(),
-                                        //     ),
-                                        //   );
-                                        // } // Placeholder for Login Button
+                                        setState(() {
+                                          ispwdvisible = !ispwdvisible;
+                                        });
                                       },
-                                      style: TextButton.styleFrom(
-                                        foregroundColor: Colors.white,
-                                        backgroundColor: Colors.black,
-                                        shape: const RoundedRectangleBorder(
-                                          borderRadius: BorderRadius.zero,
-                                        ),
-                                      ),
-                                      child: const Row(
-                                        children: [
-                                          Icon(
-                                            Icons.login,
-                                            size: 25,
-                                            color: Colors.white,
-                                          ),
-                                          SizedBox(width: 10),
-                                          Text(
-                                            "Login",
-                                            style: TextStyle(
-                                              fontSize: 25,
-                                              fontWeight: FontWeight.bold,
-                                            ),
-                                          ),
-                                        ],
+                                      icon: Icon(
+                                        ispwdvisible
+                                            ? Icons.visibility
+                                            : Icons.visibility_off,
                                       ),
                                     ),
                                   ),
-                                ],
-                              ),
+                                  validator:
+                                      (value) =>
+                                          value!.isEmpty
+                                              ? "Enter your password"
+                                              : null,
+                                ),
+                                Align(
+                                  alignment: Alignment.centerRight,
+                                  child: TextButton(
+                                    onPressed: () {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder:
+                                              (context) => ForgotPwdScreen(),
+                                        ),
+                                      );
+                                    },
+                                    child: const Text("Forgot Password?"),
+                                  ),
+                                ),
+                                const SizedBox(height: 10),
+                                SizedBox(
+                                  width: double.infinity,
+                                  height: 50,
+                                  child: ElevatedButton(
+                                    onPressed: _adminLogin,
+                                    style: ElevatedButton.styleFrom(
+                                      backgroundColor: Colors.black,
+                                    ),
+                                    child: const Text(
+                                      "Login",
+                                      style: TextStyle(
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.bold,
+                                        color: Colors.white,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
                         ),
